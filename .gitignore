@@ -1,0 +1,20 @@
+# PowerShell
+*.ps1xml
+*.psd1
+*.psm1~
+*.ps1~
+
+# Logs
+*.log
+
+# Credentials
+*.cred
+credentials.xml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
