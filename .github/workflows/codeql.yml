@@ -21,7 +21,8 @@ jobs:
       contents: read
       security-events: write
 
-    if: false  # No supported languages found for PowerShell
+    # Disabled: No supported languages found for PowerShell repository
+    if: false
 
     steps:
     - name: Checkout repository

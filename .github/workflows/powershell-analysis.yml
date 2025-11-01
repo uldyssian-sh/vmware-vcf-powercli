@@ -38,6 +38,7 @@ jobs:
         Install-Module -Name VCF.PowerCLI -RequiredVersion 9.0.0.24798382 -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck
     
     - name: Run PSScriptAnalyzer
+      id: pssa-scan
       shell: powershell
       run: |
         try {
@@ -52,10 +53,18 @@ jobs:
         }
         catch {
           Write-Error "PSScriptAnalyzer execution failed: $($_.Exception.Message)"
+          Write-Host "::set-output name=failed::true"
           exit 1
         }
+        
+    - name: Handle PSScriptAnalyzer failure
+      if: failure() && steps.pssa-scan.outputs.failed == 'true'
+      run: |
+        echo "PSScriptAnalyzer scan failed - check logs for details"
+        echo "This may indicate code quality issues that need attention"
     
     - name: Run Pester Tests
+      id: pester-tests
       shell: powershell
       run: |
         try {
@@ -68,6 +77,7 @@ jobs:
             $result = Invoke-Pester -Configuration $config -ErrorAction Stop
             if ($result.FailedCount -gt 0) {
               Write-Error "$($result.FailedCount) tests failed"
+              Write-Host "::set-output name=failed::true"
               exit 1
             }
           } else {
@@ -76,8 +86,15 @@ jobs:
         }
         catch {
           Write-Error "Pester test execution failed: $($_.Exception.Message)"
+          Write-Host "::set-output name=failed::true"
           exit 1
         }
+        
+    - name: Handle Pester test failure
+      if: failure() && steps.pester-tests.outputs.failed == 'true'
+      run: |
+        echo "Pester tests failed - check test results for details"
+        echo "This indicates test failures that need to be addressed"
     
     - name: Upload Test Results
       uses: actions/upload-artifact@v4

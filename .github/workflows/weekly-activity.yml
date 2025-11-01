@@ -1,5 +1,6 @@
 name: Weekly Activity
 
+# Run every Sunday at midnight UTC
 on:
   schedule:
     - cron: '0 0 * * 0'
@@ -17,15 +18,38 @@ jobs:
         uses: actions/checkout@v5
         
       - name: Weekly Activity
+        id: activity-check
         run: |
           echo "Weekly activity check completed"
           date > weekly-activity.log
+          echo "::set-output name=completed::true"
           
       - name: Commit changes
+        id: commit-changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git diff --staged --quiet || git commit -m "Weekly activity update" || true
-          git push || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            echo "::set-output name=changes::false"
+          else
+            git commit -m "Weekly activity update"
+            echo "::set-output name=changes::true"
+          fi
         continue-on-error: true
+        
+      - name: Push changes
+        if: steps.commit-changes.outputs.changes == 'true'
+        run: |
+          git push || {
+            echo "Failed to push changes - this may be expected"
+            exit 0
+          }
+        continue-on-error: true
+        
+      - name: Handle workflow failure
+        if: failure()
+        run: |
+          echo "Weekly activity workflow encountered issues but continuing"
+          echo "Check previous steps for specific error details"
