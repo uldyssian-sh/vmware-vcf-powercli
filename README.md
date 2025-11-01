@@ -197,6 +197,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > 🌎 **VMware Cloud on AWS Guide**: See [Getting Started with VMware Cloud on AWS cmdlets](./docs/Getting-Started-VMware-Cloud-On-AWS.md) for VMC on AWS management.
 
+> 🔒 **NSX-T Data Center Guide**: See [Getting Started with NSX-T Data Center cmdlets](./docs/Getting-Started-NSX-T-Data-Center.md) for NSX-T network and security management.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
