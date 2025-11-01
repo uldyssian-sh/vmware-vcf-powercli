@@ -1,0 +1,45 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "uldyssian-sh",
+      "name": "uldyssian-sh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/uldyssian-sh",
+      "profile": "https://github.com/uldyssian-sh",
+      "contributions": [
+        "code",
+        "doc",
+        "infra",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "actions-user",
+      "name": "actions-user",
+      "avatar_url": "https://avatars.githubusercontent.com/u/actions-user",
+      "profile": "https://github.com/actions-user",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "avatar_url": "https://avatars.githubusercontent.com/u/dependabot[bot]",
+      "profile": "https://github.com/dependabot",
+      "contributions": [
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "vmware-vcf-powercli",
+  "projectOwner": "uldyssian-sh",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
