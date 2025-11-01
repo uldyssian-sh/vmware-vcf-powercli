@@ -1,36 +1,32 @@
 ---
-name: Bug Report
+name: Bug report
 about: Create a report to help us improve
 title: '[BUG] '
 labels: bug
 assignees: ''
 ---
 
-## Bug Description
+**Describe the bug**
 A clear and concise description of what the bug is.
 
-## Steps to Reproduce
+**To Reproduce**
+Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-## Expected Behavior
+**Expected behavior**
 A clear and concise description of what you expected to happen.
 
-## Screenshots
+**Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-## Environment
-- **OS**: [e.g. Windows Server 2022]
-- **PowerShell Version**: [e.g. 5.1, 7.3]
-- **PowerCLI Version**: [e.g. 13.2]
-- **VCF Version**: [e.g. 9.0]
+**Environment (please complete the following information):**
+- OS: [e.g. Windows 10, Ubuntu 20.04]
+- PowerShell Version: [e.g. 7.2.0]
+- PowerCLI Version: [e.g. 13.3.0]
+- VCF Version: [e.g. 9.0.0]
 
-## Additional Context
+**Additional context**
 Add any other context about the problem here.
-
-## Error Details
-```powershell
-# Paste any error messages or logs here
-```
