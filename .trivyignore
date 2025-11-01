@@ -1,0 +1,10 @@
+# Ignore test files
+**/tests/**
+**/test/**
+
+# Ignore documentation
+**/docs/**
+**/*.md
+
+# Ignore examples
+**/examples/**
