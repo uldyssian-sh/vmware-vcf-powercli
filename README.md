@@ -14,6 +14,13 @@
 - **Advanced Networking**: NSX 4.2.0 integration, micro-segmentation
 - **Storage Optimization**: vSAN 8.0 U3 performance enhancements
 
+### 🛠️ Available SDKs & Tools
+- **VCF PowerCLI**: PowerShell cmdlets for VCF management
+- **VCF REST APIs**: RESTful APIs for programmatic access
+- **VCF Python SDK**: Python bindings for VCF operations
+- **VCF Terraform Provider**: Infrastructure as Code support
+- **VCF CLI**: Command-line interface for VCF operations
+
 ## 🎯 Overview
 
 This repository provides production-ready PowerShell scripts and modules for comprehensive VMware Cloud Foundation management using PowerCLI. Designed for enterprise environments with security, reliability, and scalability in mind.
@@ -59,10 +66,12 @@ Get-VCFWorkloadDomain
 | **VCF PowerCLI** | 13.3.0 or later |
 | **VCF.PowerCLI** | 9.0.0.24798382 or later |
 | **VCF Version** | 9.0.0 (Build 24798382) |
+| **VCF API Version** | 5.0 |
 | **vSphere** | 8.0 Update 3 (Build 24022515) |
 | **NSX** | 4.2.0 (Build 23761687) |
 | **vSAN** | 8.0 Update 3 (Build 24022515) |
 | **Network** | HTTPS (443) to SDDC Manager, DNS resolution |
+| **Authentication** | Basic Auth, OAuth 2.0, API Tokens |
 
 ## 🔧 Installation
 
@@ -164,6 +173,19 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 # Perform health checks
 .\examples\Get-VCFHealth.ps1 -IncludeVMs
+
+# Get system information
+.\examples\Get-VCFSystemInfo.ps1
+```
+
+### 🛠️ API Integration
+```powershell
+# Get API information
+.\examples\Get-VCFAPIInfo.ps1
+
+# Direct REST API calls
+$credential = Get-Credential
+.\examples\Invoke-VCFRestAPI.ps1 -FQDN "vcf-mgmt01.domain.local" -Credential $credential -Endpoint "/v1/domains"
 ```
 
 > 📚 **More Examples**: See the [examples](./examples/) directory for comprehensive usage scenarios.
