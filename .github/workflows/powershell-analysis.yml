@@ -1,4 +1,4 @@
-name: 🔍 Code Quality & Security
+name: Code Quality & Security
 
 on:
   push:
@@ -18,16 +18,16 @@ env:
 
 jobs:
   powershell-analysis:
-    name: 🔍 PowerShell Analysis
+    name: PowerShell Analysis
     runs-on: windows-latest
     
     steps:
-    - name: 📥 Checkout Code
+    - name: Checkout Code
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
     
-    - name: 📦 Install PowerShell Modules
+    - name: Install PowerShell Modules
       shell: powershell
       run: |
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
@@ -36,17 +36,17 @@ jobs:
         Install-Module -Name VMware.PowerCLI -MinimumVersion 13.3.0 -Force -Scope CurrentUser
         Install-Module -Name VCF.PowerCLI -RequiredVersion 9.0.0.24798382 -Force -Scope CurrentUser
     
-    - name: 🔍 Run PSScriptAnalyzer
+    - name: Run PSScriptAnalyzer
       shell: powershell
       run: |
         try {
           $results = Invoke-ScriptAnalyzer -Path . -Recurse -Settings ./PSScriptAnalyzerSettings.psd1 -ErrorAction Stop
           if ($results) {
-            Write-Host "❌ PSScriptAnalyzer found issues:" -ForegroundColor Red
+            Write-Host "PSScriptAnalyzer found issues:" -ForegroundColor Red
             $results | Format-Table -AutoSize
             exit 1
           } else {
-            Write-Host "✅ PSScriptAnalyzer passed - No issues found" -ForegroundColor Green
+            Write-Host "PSScriptAnalyzer passed - No issues found" -ForegroundColor Green
           }
         }
         catch {
@@ -54,7 +54,7 @@ jobs:
           exit 1
         }
     
-    - name: 🧪 Run Pester Tests
+    - name: Run Pester Tests
       shell: powershell
       run: |
         try {
@@ -70,7 +70,7 @@ jobs:
               exit 1
             }
           } else {
-            Write-Host "⚠️ No tests directory found" -ForegroundColor Yellow
+            Write-Host "No tests directory found" -ForegroundColor Yellow
           }
         }
         catch {
@@ -78,7 +78,7 @@ jobs:
           exit 1
         }
     
-    - name: 📊 Upload Test Results
+    - name: Upload Test Results
       uses: actions/upload-artifact@v4
       if: always()
       with:
@@ -87,18 +87,18 @@ jobs:
         retention-days: 30
 
   security-scan:
-    name: 🛡️ Security Scan
+    name: Security Scan
     runs-on: ubuntu-latest
     
     steps:
-    - name: 📥 Checkout Code
+    - name: Checkout Code
       uses: actions/checkout@v4
     
-    - name: 🔒 Run CodeQL Analysis
+    - name: Run CodeQL Analysis
       uses: github/codeql-action/init@v3
       with:
         languages: javascript
     
-    - name: 🔍 Perform CodeQL Analysis
+    - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       continue-on-error: true
