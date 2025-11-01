@@ -17,12 +17,13 @@ function Connect-HCXServerBasic {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects to HCX server using User and Password parameters
-        Connect-HCXServer -Server $ServerAddress -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-HCXServer -Server $ServerAddress -User $User -Password $plainPassword
         Write-Host "Successfully connected to HCX server: $ServerAddress" -ForegroundColor Green
     }
     catch {
@@ -62,12 +63,13 @@ function Connect-HCXServerSaveCredentials {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects and stores credentials in credential store
-        Connect-HCXServer -Server $ServerAddress -User $User -Password $Password -SaveCredential
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-HCXServer -Server $ServerAddress -User $User -Password $plainPassword -SaveCredential
         Write-Host "Successfully connected to HCX server and saved credentials: $ServerAddress" -ForegroundColor Green
     }
     catch {

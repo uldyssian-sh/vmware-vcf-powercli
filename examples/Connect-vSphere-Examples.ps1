@@ -17,12 +17,13 @@ function Connect-vSphereBasic {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects to a vSphere server by using the User and Password parameters
-        Connect-VIServer -Server $Server -Protocol https -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-VIServer -Server $Server -Protocol https -User $User -Password $plainPassword
         Write-Host "Successfully connected to $Server" -ForegroundColor Green
     }
     catch {

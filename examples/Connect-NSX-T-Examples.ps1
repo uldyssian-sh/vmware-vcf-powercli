@@ -17,12 +17,13 @@ function Connect-NsxtServerBasic {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects to NSX-T server using User and Password parameters
-        Connect-NsxtServer -Server $ServerAddress -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-NsxtServer -Server $ServerAddress -User $User -Password $plainPassword
         Write-Host "Successfully connected to NSX-T server: $ServerAddress" -ForegroundColor Green
     }
     catch {
@@ -62,12 +63,13 @@ function Connect-NsxtServerSaveCredentials {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects and stores credentials in credential store
-        Connect-NsxtServer -Server $ServerAddress -User $User -Password $Password -SaveCredentials
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-NsxtServer -Server $ServerAddress -User $User -Password $plainPassword -SaveCredentials
         Write-Host "Successfully connected to NSX-T server and saved credentials: $ServerAddress" -ForegroundColor Green
     }
     catch {

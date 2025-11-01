@@ -17,12 +17,13 @@ function Connect-VcfSddcManagerServerBasic {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects to VMware SDDC Manager server using User and Password parameters
-        Connect-VcfSddcManagerServer -Server $Server -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-VcfSddcManagerServer -Server $Server -User $User -Password $plainPassword
         Write-Host "Successfully connected to VCF SDDC Manager server: $Server" -ForegroundColor Green
     }
     catch {

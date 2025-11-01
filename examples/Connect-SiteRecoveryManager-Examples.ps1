@@ -17,12 +17,13 @@ function Connect-SrmServerBasic {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connect to vCenter Server first
-        Connect-VIServer $VCenterServer -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-VIServer $VCenterServer -User $User -Password $plainPassword
         Write-Host "Connected to vCenter Server: $VCenterServer" -ForegroundColor Green
         
         # Connect to associated SRM server
@@ -42,12 +43,13 @@ function Connect-SrmServerDirect {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects directly to SRM server by IP address
-        Connect-SrmServer -SrmServerAddress $SrmServerAddress -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-SrmServer -SrmServerAddress $SrmServerAddress -User $User -Password $plainPassword
         Write-Host "Successfully connected to SRM server: $SrmServerAddress" -ForegroundColor Green
     }
     catch {
@@ -63,14 +65,15 @@ function Connect-SrmServerRemoteCredential {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password,
+        [SecureString]$Password,
         [Parameter(Mandatory = $true)]
         [PSCredential]$RemoteCredential
     )
     
     try {
         # Connect to vCenter Server first
-        Connect-VIServer $VCenterServer -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-VIServer $VCenterServer -User $User -Password $plainPassword
         Write-Host "Connected to vCenter Server: $VCenterServer" -ForegroundColor Green
         
         # Connect to SRM server with remote credentials
@@ -90,12 +93,13 @@ function Connect-SrmServerIgnoreCerts {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connect to vCenter Server first
-        Connect-VIServer $VCenterServer -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-VIServer $VCenterServer -User $User -Password $plainPassword
         Write-Host "Connected to vCenter Server: $VCenterServer" -ForegroundColor Green
         
         # Connect to SRM server ignoring certificate errors

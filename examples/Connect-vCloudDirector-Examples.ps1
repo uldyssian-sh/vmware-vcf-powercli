@@ -17,14 +17,15 @@ function Connect-CIServerOrganization {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password,
+        [SecureString]$Password,
         [Parameter(Mandatory = $true)]
         [string]$Organization
     )
     
     try {
         # Connects as an organization user to the provided organization
-        Connect-CIServer -Server $Server -User $User -Password $Password -Org $Organization
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-CIServer -Server $Server -User $User -Password $plainPassword -Org $Organization
         Write-Host "Successfully connected to $Server as organization user" -ForegroundColor Green
     }
     catch {
@@ -40,12 +41,13 @@ function Connect-CIServerSystemAdmin {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects as a system administrator to a system organization
-        Connect-CIServer -Server $Server -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-CIServer -Server $Server -User $User -Password $plainPassword
         Write-Host "Successfully connected to $Server as system administrator" -ForegroundColor Green
     }
     catch {
@@ -111,14 +113,15 @@ function Connect-CIServerCloudAir {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password,
+        [SecureString]$Password,
         [Parameter(Mandatory = $true)]
         [string]$DatacenterName
     )
     
     try {
         # Connects to a vCloud Air datacenter
-        $vCloudAirConnection = Connect-PIServer -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        $vCloudAirConnection = Connect-PIServer -User $User -Password $plainPassword
         $myDatacenter = Get-PIDatacenter $DatacenterName
         Connect-CIServer -PIDatacenter $myDatacenter
         Write-Host "Successfully connected to vCloud Air datacenter: $DatacenterName" -ForegroundColor Green

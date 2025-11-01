@@ -17,12 +17,13 @@ function Connect-OMServerBasic {
         [Parameter(Mandatory = $true)]
         [string]$UserName,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects to VMware Aria Operations server using User and Password parameters
-        Connect-OMServer -Server $ServerName -User $UserName -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-OMServer -Server $ServerName -User $UserName -Password $plainPassword
         Write-Host "Successfully connected to vRealize Operations server: $ServerName" -ForegroundColor Green
     }
     catch {
@@ -40,12 +41,13 @@ function Connect-OMServerVCenterAuth {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects as vCenter Server user imported from monitored vCenter
-        Connect-OMServer -Server $ServerName -AuthSource $AuthSource -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-OMServer -Server $ServerName -AuthSource $AuthSource -User $User -Password $plainPassword
         Write-Host "Successfully connected to vROps server using vCenter authentication: $ServerName" -ForegroundColor Green
     }
     catch {
@@ -61,12 +63,13 @@ function Connect-OMServerSession {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Create initial connection and get session
-        $srv = Connect-OMServer $ServerName -User $User -Password $Password
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        $srv = Connect-OMServer $ServerName -User $User -Password $plainPassword
         Write-Host "Initial connection established, SessionId: $($srv.SessionId)" -ForegroundColor Yellow
         
         # Connect using existing session
