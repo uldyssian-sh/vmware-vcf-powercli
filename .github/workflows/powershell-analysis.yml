@@ -1,0 +1,43 @@
+name: PowerShell Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  powershell-analysis:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install PowerShell modules
+      shell: powershell
+      run: |
+        Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
+        Install-Module -Name Pester -Force -Scope CurrentUser
+    
+    - name: Run PSScriptAnalyzer
+      shell: powershell
+      run: |
+        $results = Invoke-ScriptAnalyzer -Path . -Recurse -ReportSummary
+        if ($results) {
+          $results | Format-Table
+          exit 1
+        }
+    
+    - name: Run Pester tests
+      shell: powershell
+      run: |
+        if (Test-Path "./tests") {
+          Invoke-Pester -Path "./tests" -OutputFormat NUnitXml -OutputFile "test-results.xml"
+        }
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: test-results.xml

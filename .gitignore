@@ -6,15 +6,62 @@
 
 # Logs
 *.log
+*.txt
+logs/
 
-# Credentials
+# Credentials and Secrets
 *.cred
+*.key
+*.pem
+*.pfx
+*.p12
 credentials.xml
+.env
+.env.local
+.env.*.local
+secrets/
 
-# IDE
+# Test Results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+test-results.xml
+
+# IDE and Editors
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# OS
+# OS Generated
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
+
+# Build and Package
+build/
+dist/
+out/
+*.nupkg
+*.zip
+*.tar.gz
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Documentation Build
+docs/_build/
+docs/site/
+
+# PowerShell Gallery
+*.nuspec
