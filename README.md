@@ -203,6 +203,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > 🔄 **VMware HCX Guide**: See [Getting Started with VMware HCX cmdlets](./docs/Getting-Started-VMware-HCX.md) for hybrid cloud extension and migration automation.
 
+> 🏢 **VCF SDDC Manager Guide**: See [Getting Started with VCF SDDC Manager cmdlets](./docs/Getting-Started-VCF-SDDC-Manager.md) for VCF infrastructure management and automation.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
