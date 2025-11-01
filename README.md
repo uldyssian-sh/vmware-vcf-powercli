@@ -1,45 +1,43 @@
 # VCF PowerCLI CMDLET References by VCF Components
 
-![VMware](https://img.shields.io/badge/VMware-607078?style=for-the-badge&logo=vmware&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Version](https://img.shields.io/badge/VCF-9.0-blue?style=for-the-badge)
+[![VMware](https://img.shields.io/badge/VMware-607078?style=flat-square&logo=vmware&logoColor=white)](https://www.vmware.com/)
+[![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)](https://docs.microsoft.com/en-us/powershell/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![VCF Version](https://img.shields.io/badge/VCF-9.0-blue?style=flat-square)](https://docs.vmware.com/en/VMware-Cloud-Foundation/)
 
-> **Comprehensive PowerCLI CMDLET reference guide organized by VMware Cloud Foundation (VCF) 9.0 components.**
+**Comprehensive PowerCLI CMDLET reference guide organized by VMware Cloud Foundation (VCF) 9.0 components for enterprise automation and management.**
 
-### 🆕 VCF 9.0 Features
-- **Enhanced Security**: Certificate lifecycle management, identity federation
-- **Simplified Operations**: Automated lifecycle management, health monitoring
-- **Multi-Cloud Ready**: Hybrid cloud connectivity, workload mobility
-- **Advanced Networking**: NSX 4.2.0 integration, micro-segmentation
-- **Storage Optimization**: vSAN 8.0 U3 performance enhancements
+## VCF 9.0 Enterprise Features
 
-### 🛠️ PowerCLI Automation Features
-- **VCF Management**: Complete SDDC lifecycle automation
-- **Health Monitoring**: Automated health checks and reporting
-- **Certificate Management**: SSL certificate lifecycle automation
-- **Workload Domains**: Domain creation and management
-- **Infrastructure Operations**: Host, cluster, and network automation
+- **Enhanced Security** - Certificate lifecycle management, identity federation
+- **Simplified Operations** - Automated lifecycle management, health monitoring  
+- **Multi-Cloud Ready** - Hybrid cloud connectivity, workload mobility
+- **Advanced Networking** - NSX 4.2.0 integration, micro-segmentation
+- **Storage Optimization** - vSAN 8.0 U3 performance enhancements
 
-## 🎯 Overview
+## PowerCLI Automation Capabilities
 
-This repository provides production-ready PowerShell scripts and modules for comprehensive VMware Cloud Foundation management using PowerCLI. Designed for enterprise environments with security, reliability, and scalability in mind.
+- **VCF Management** - Complete SDDC lifecycle automation
+- **Health Monitoring** - Automated health checks and reporting
+- **Certificate Management** - SSL certificate lifecycle automation
+- **Workload Domains** - Domain creation and management
+- **Infrastructure Operations** - Host, cluster, and network automation
 
-## 📚 Table of Contents
+## Table of Contents
 
-- [🎯 Overview](#-overview)
-- [💻 System Requirements](#-system-requirements)
-- [🚀 Quick Start](#-quick-start)
-- [🔧 Installation](#-installation)
-- [⚙️ Configuration](#-configuration)
-- [📝 Usage Examples](#-usage-examples)
-- [🔒 Security](#-security)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
+- [System Requirements](#system-requirements)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage Examples](#usage-examples)
+- [Component Guides](#component-guides)
+- [Security](#security)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```powershell
 # 1. Install VCF PowerCLI
@@ -57,7 +55,7 @@ Connect-VCFManager -fqdn "vcf-mgmt01.domain.local" -credential $credential
 Get-VCFWorkloadDomain
 ```
 
-## 💻 System Requirements
+## System Requirements
 
 | Component | Requirement |
 |-----------|-------------|
@@ -71,9 +69,9 @@ Get-VCFWorkloadDomain
 | **vSAN** | 8.0 Update 3 (Build 24022515) |
 | **Network** | HTTPS (443) to SDDC Manager, DNS resolution |
 
-## 🔧 Installation
+## Installation
 
-### 📝 Prerequisites
+### Prerequisites
 
 ```powershell
 # 1. Verify PowerShell version (7.2+ required)
@@ -92,9 +90,9 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 # Download from: https://dotnet.microsoft.com/download/dotnet/6.0
 ```
 
-### 📦 VMware PowerCLI Installation
+### VMware PowerCLI Installation
 
-#### 🌐 Online Installation (Recommended)
+#### Online Installation (Recommended)
 ```powershell
 # Install VMware PowerCLI (base requirement)
 Install-Module -Name VMware.PowerCLI -MinimumVersion 13.3.0 -Scope CurrentUser -Force
@@ -109,7 +107,7 @@ Get-Module -Name VMware.PowerCLI, VCF.PowerCLI -ListAvailable | Select-Object Na
 Import-Module VMware.PowerCLI, VCF.PowerCLI
 ```
 
-#### 💾 Offline Installation
+#### Offline Installation
 ```powershell
 # Download modules
 Save-Module -Name VCF.PowerCLI -Path "C:\Temp\VCF-PowerCLI" -Repository PSGallery
@@ -118,7 +116,7 @@ Save-Module -Name VCF.PowerCLI -Path "C:\Temp\VCF-PowerCLI" -Repository PSGaller
 Install-Module -Name VCF.PowerCLI -Repository PSGallery -Force
 ```
 
-### ⚙️ Post-Installation Setup
+### Post-Installation Setup
 
 ```powershell
 # Configure PowerCLI settings
@@ -127,9 +125,9 @@ Set-PowerCLIConfiguration -ParticipateInCEIP $false -Confirm:$false -Scope Sessi
 Set-PowerCLIConfiguration -DefaultVIServerMode Multiple -Confirm:$false -Scope Session
 ```
 
-## ⚙️ Configuration
+## Configuration
 
-### 🔐 Secure Credential Storage
+### Secure Credential Storage
 
 ```powershell
 # Method 1: Windows Credential Manager (Recommended)
@@ -141,7 +139,7 @@ $env:VCF_SERVER = "vcf-mgmt01.domain.local"
 $env:VCF_USERNAME = "administrator@vsphere.local"
 ```
 
-### 📝 Environment Configuration
+### Environment Configuration
 
 Create `config.json` (excluded from git):
 ```json
@@ -153,9 +151,9 @@ Create `config.json` (excluded from git):
 }
 ```
 
-## 📝 Usage Examples
+## Usage Examples
 
-### 🔗 Basic Connection
+### Basic Connection
 ```powershell
 # Load stored credentials
 $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xml"
@@ -164,7 +162,7 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 .\examples\Connect-VCF.ps1 -Server "vcf-mgmt01.domain.local" -Credential $credential
 ```
 
-### 📈 Infrastructure Monitoring
+### Infrastructure Monitoring
 ```powershell
 # Get comprehensive inventory
 .\examples\Get-VCFInventory.ps1 -OutputPath "C:\Reports\vcf-inventory.csv"
@@ -176,7 +174,7 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 .\examples\Get-VCFSystemInfo.ps1
 ```
 
-### 🔧 PowerCLI Automation
+### PowerCLI Automation
 ```powershell
 # Get VCF system information
 .\examples\Get-VCFSystemInfo.ps1
@@ -185,43 +183,44 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 .\examples\Get-VCFHealthStatus.ps1 -IncludeDetails
 ```
 
-> 📚 **More Examples**: See the [examples](./examples/) directory for comprehensive usage scenarios.
+**More Examples**: See the [examples](./examples/) directory for comprehensive usage scenarios.
 
-> 📝 **vSphere & vSAN Guide**: See [Getting Started with vSphere and vSAN cmdlets](./docs/Getting-Started-vSphere-vSAN.md) for detailed connection examples.
+## Component Guides
 
-> ☁️ **vCloud Director Guide**: See [Getting Started with vCloud Director cmdlets](./docs/Getting-Started-vCloud-Director.md) for vCD automation examples.
+Comprehensive PowerCLI CMDLET reference guides organized by VMware components:
 
-> 🔄 **Site Recovery Manager Guide**: See [Getting Started with Site Recovery Manager cmdlets](./docs/Getting-Started-Site-Recovery-Manager.md) for SRM disaster recovery automation.
+### Core Infrastructure
+- **[vSphere & vSAN](./docs/Getting-Started-vSphere-vSAN.md)** - Virtual infrastructure management and hyper-converged storage
+- **[NSX-T Data Center](./docs/Getting-Started-NSX-T-Data-Center.md)** - Network virtualization and security
+- **[VCF SDDC Manager](./docs/Getting-Started-VCF-SDDC-Manager.md)** - Cloud Foundation lifecycle management
 
-> ☁️ **VMware Cloud Services Guide**: See [Getting Started with VMware Cloud Services cmdlets](./docs/Getting-Started-VMware-Cloud-Services.md) for cloud services management.
+### Cloud Services
+- **[vCloud Director](./docs/Getting-Started-vCloud-Director.md)** - Multi-tenant cloud infrastructure
+- **[VMware Cloud Services](./docs/Getting-Started-VMware-Cloud-Services.md)** - Cloud services platform management
+- **[VMware Cloud on AWS](./docs/Getting-Started-VMware-Cloud-On-AWS.md)** - Hybrid cloud on Amazon Web Services
 
-> 🌎 **VMware Cloud on AWS Guide**: See [Getting Started with VMware Cloud on AWS cmdlets](./docs/Getting-Started-VMware-Cloud-On-AWS.md) for VMC on AWS management.
+### Operations & Management
+- **[vRealize Operations Manager](./docs/Getting-Started-vRealize-Operations-Manager.md)** - Performance monitoring and analytics
+- **[Site Recovery Manager](./docs/Getting-Started-Site-Recovery-Manager.md)** - Disaster recovery automation
+- **[VMware HCX](./docs/Getting-Started-VMware-HCX.md)** - Hybrid cloud extension and migration
 
-> 🔒 **NSX-T Data Center Guide**: See [Getting Started with NSX-T Data Center cmdlets](./docs/Getting-Started-NSX-T-Data-Center.md) for NSX-T network and security management.
+## Security
 
-> 📈 **vRealize Operations Guide**: See [Getting Started with vRealize Operations Manager cmdlets](./docs/Getting-Started-vRealize-Operations-Manager.md) for monitoring and analytics automation.
+### Security Features
+- **Secure Credential Storage** - Windows Credential Manager integration
+- **Input Validation** - Comprehensive parameter validation
+- **Error Handling** - Robust exception management
+- **Audit Logging** - Detailed operation logging
+- **No Hardcoded Secrets** - Zero embedded credentials
 
-> 🔄 **VMware HCX Guide**: See [Getting Started with VMware HCX cmdlets](./docs/Getting-Started-VMware-HCX.md) for hybrid cloud extension and migration automation.
-
-> 🏢 **VCF SDDC Manager Guide**: See [Getting Started with VCF SDDC Manager cmdlets](./docs/Getting-Started-VCF-SDDC-Manager.md) for VCF infrastructure management and automation.
-
-## 🔒 Security
-
-### 🔐 Security Features
-- ✅ **Secure Credential Storage** - Windows Credential Manager integration
-- ✅ **Input Validation** - Comprehensive parameter validation
-- ✅ **Error Handling** - Robust exception management
-- ✅ **Audit Logging** - Detailed operation logging
-- ✅ **No Hardcoded Secrets** - Zero embedded credentials
-
-### 🔍 Security Scanning
+### Security Scanning
 | Tool | Status | Purpose |
 |------|--------|----------|
-| PSScriptAnalyzer | ✅ Active | PowerShell best practices |
-| GitHub CodeQL | ✅ Active | Security vulnerability detection |
-| Dependabot | ✅ Active | Dependency security updates |
+| PSScriptAnalyzer | Active | PowerShell best practices |
+| GitHub CodeQL | Active | Security vulnerability detection |
+| Dependabot | Active | Dependency security updates |
 
-### 🚨 Security Guidelines
+### Security Guidelines
 - Never commit credentials or API keys
 - Use secure credential storage methods
 - Validate all input parameters
@@ -230,15 +229,15 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-### 🐛 Issues & Feature Requests
-- 🐛 [Report Bug](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues/new?template=bug_report.md)
-- ✨ [Request Feature](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues/new?template=feature_request.md)
+### Issues & Feature Requests
+- [Report Bug](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues/new?template=bug_report.md)
+- [Request Feature](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues/new?template=feature_request.md)
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
@@ -246,8 +245,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Made with ❤️ for VMware Cloud Foundation automation**
+**Enterprise VMware Cloud Foundation PowerCLI Automation**
 
-[⬆ Back to Top](#vcf-powercli-cmdlet-references-by-vcf-components)
+[Back to Top](#vcf-powercli-cmdlet-references-by-vcf-components)
 
 </div>
