@@ -41,7 +41,7 @@ jobs:
       shell: powershell
       run: |
         try {
-          $results = Invoke-ScriptAnalyzer -Path . -Recurse -Settings ./PSScriptAnalyzerSettings.psd1 -ErrorAction Stop
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse -ErrorAction Stop
           if ($results) {
             Write-Host "PSScriptAnalyzer found issues:" -ForegroundColor Red
             $results | Format-Table -AutoSize
