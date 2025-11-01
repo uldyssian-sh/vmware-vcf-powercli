@@ -193,6 +193,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > 🔄 **Site Recovery Manager Guide**: See [Getting Started with Site Recovery Manager cmdlets](./docs/Getting-Started-Site-Recovery-Manager.md) for SRM disaster recovery automation.
 
+> ☁️ **VMware Cloud Services Guide**: See [Getting Started with VMware Cloud Services cmdlets](./docs/Getting-Started-VMware-Cloud-Services.md) for cloud services management.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
