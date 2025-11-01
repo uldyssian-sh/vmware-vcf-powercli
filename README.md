@@ -7,6 +7,13 @@
 
 > **Enterprise-grade PowerShell automation scripts for VMware Cloud Foundation (VCF) 9.0 management and operations.**
 
+### 🆕 VCF 9.0 Features
+- **Enhanced Security**: Certificate lifecycle management, identity federation
+- **Simplified Operations**: Automated lifecycle management, health monitoring
+- **Multi-Cloud Ready**: Hybrid cloud connectivity, workload mobility
+- **Advanced Networking**: NSX 4.2.0 integration, micro-segmentation
+- **Storage Optimization**: vSAN 8.0 U3 performance enhancements
+
 ## 🎯 Overview
 
 This repository provides production-ready PowerShell scripts and modules for comprehensive VMware Cloud Foundation management using PowerCLI. Designed for enterprise environments with security, reliability, and scalability in mind.
@@ -47,37 +54,52 @@ Get-VCFWorkloadDomain
 
 | Component | Requirement |
 |-----------|-------------|
-| **Operating System** | Windows Server 2019/2022, Windows 10/11, Linux, macOS |
-| **PowerShell** | 7.2+ (PowerShell Core) |
-| **VCF PowerCLI** | 9.0.0.24798382 or later |
-| **VCF Version** | 9.0 or later |
-| **vSphere** | 8.0 U3 or later |
-| **Network** | HTTPS (443) access to SDDC Manager |
+| **Operating System** | Windows 10/11, Windows Server 2019/2022, RHEL 8/9, Ubuntu 20.04/22.04, macOS 12+ |
+| **PowerShell** | 7.2.0 or later (PowerShell Core) |
+| **VCF PowerCLI** | 13.3.0 or later |
+| **VCF.PowerCLI** | 9.0.0.24798382 or later |
+| **VCF Version** | 9.0.0 (Build 24798382) |
+| **vSphere** | 8.0 Update 3 (Build 24022515) |
+| **NSX** | 4.2.0 (Build 23761687) |
+| **vSAN** | 8.0 Update 3 (Build 24022515) |
+| **Network** | HTTPS (443) to SDDC Manager, DNS resolution |
 
 ## 🔧 Installation
 
 ### 📝 Prerequisites
 
 ```powershell
-# 1. Set execution policy
+# 1. Verify PowerShell version (7.2+ required)
+$PSVersionTable.PSVersion
+
+# 2. Set execution policy
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-# 2. Install NuGet provider
+# 3. Install NuGet provider
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 
-# 3. Trust PowerShell Gallery
+# 4. Trust PowerShell Gallery
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+
+# 5. Install .NET 6.0+ (if not present)
+# Download from: https://dotnet.microsoft.com/download/dotnet/6.0
 ```
 
 ### 📦 VMware PowerCLI Installation
 
 #### 🌐 Online Installation (Recommended)
 ```powershell
-# Install VCF PowerCLI
-Install-Module -Name VCF.PowerCLI -Scope CurrentUser -Force
+# Install VMware PowerCLI (base requirement)
+Install-Module -Name VMware.PowerCLI -MinimumVersion 13.3.0 -Scope CurrentUser -Force
+
+# Install VCF PowerCLI (VCF-specific cmdlets)
+Install-Module -Name VCF.PowerCLI -RequiredVersion 9.0.0.24798382 -Scope CurrentUser -Force
 
 # Verify installation
-Get-Module -Name VCF.PowerCLI -ListAvailable | Select-Object Name, Version
+Get-Module -Name VMware.PowerCLI, VCF.PowerCLI -ListAvailable | Select-Object Name, Version
+
+# Import modules
+Import-Module VMware.PowerCLI, VCF.PowerCLI
 ```
 
 #### 💾 Offline Installation
