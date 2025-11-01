@@ -247,6 +247,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Enterprise VMware Cloud Foundation PowerCLI Automation**
 
+**Data Source Reference**: [https://developer.broadcom.com/powercli](https://developer.broadcom.com/powercli)
+
 [Back to Top](#vcf-powercli-cmdlet-references-by-vcf-components)
 
 </div>
