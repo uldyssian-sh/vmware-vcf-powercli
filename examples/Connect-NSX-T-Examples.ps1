@@ -205,7 +205,7 @@ function Get-NsxtConnectionInfo {
     try {
         $nsxtServers = Get-NsxtServer
         if ($nsxtServers.Count -gt 0) {
-            Write-Host "✅ NSX-T connection is active" -ForegroundColor Green
+            Write-Host "NSX-T connection is active" -ForegroundColor Green
             
             foreach ($server in $nsxtServers) {
                 Write-Host "  - Server: $($server.Name)" -ForegroundColor White
@@ -216,7 +216,7 @@ function Get-NsxtConnectionInfo {
             
             return $nsxtServers
         } else {
-            Write-Host "❌ No NSX-T connections found" -ForegroundColor Red
+            Write-Host "No NSX-T connections found" -ForegroundColor Red
             return $null
         }
     }
@@ -230,15 +230,15 @@ function Test-NsxtConnection {
     try {
         $nsxtServers = Get-NsxtServer
         if ($nsxtServers.Count -gt 0 -and $nsxtServers[0].IsConnected) {
-            Write-Host "✅ NSX-T connection is active" -ForegroundColor Green
+            Write-Host "NSX-T connection is active" -ForegroundColor Green
             return $true
         } else {
-            Write-Host "❌ NSX-T connection is not active" -ForegroundColor Red
+            Write-Host "NSX-T connection is not active" -ForegroundColor Red
             return $false
         }
     }
     catch {
-        Write-Host "❌ NSX-T connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "NSX-T connection test failed: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }
 }

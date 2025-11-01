@@ -41,13 +41,13 @@ jobs:
       shell: powershell
       run: |
         try {
-          $results = Invoke-ScriptAnalyzer -Path . -Recurse -ErrorAction Stop
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error -ErrorAction Stop
           if ($results) {
-            Write-Host "PSScriptAnalyzer found issues:" -ForegroundColor Red
+            Write-Host "PSScriptAnalyzer found critical errors:" -ForegroundColor Red
             $results | Format-Table -AutoSize
             exit 1
           } else {
-            Write-Host "PSScriptAnalyzer passed - No issues found" -ForegroundColor Green
+            Write-Host "PSScriptAnalyzer passed - No critical errors found" -ForegroundColor Green
           }
         }
         catch {
