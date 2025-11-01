@@ -199,6 +199,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > 🔒 **NSX-T Data Center Guide**: See [Getting Started with NSX-T Data Center cmdlets](./docs/Getting-Started-NSX-T-Data-Center.md) for NSX-T network and security management.
 
+> 📈 **vRealize Operations Guide**: See [Getting Started with vRealize Operations Manager cmdlets](./docs/Getting-Started-vRealize-Operations-Manager.md) for monitoring and analytics automation.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
