@@ -32,10 +32,10 @@ jobs:
       shell: powershell
       run: |
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-        Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
-        Install-Module -Name Pester -MinimumVersion 5.0 -Force -Scope CurrentUser
-        Install-Module -Name VMware.PowerCLI -MinimumVersion 13.3.0 -Force -Scope CurrentUser
-        Install-Module -Name VCF.PowerCLI -RequiredVersion 9.0.0.24798382 -Force -Scope CurrentUser
+        Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -AllowClobber
+        Install-Module -Name Pester -MinimumVersion 5.0 -Force -Scope CurrentUser -AllowClobber
+        Install-Module -Name VMware.PowerCLI -MinimumVersion 13.3.0 -Force -Scope CurrentUser -AllowClobber
+        Install-Module -Name VCF.PowerCLI -RequiredVersion 9.0.0.24798382 -Force -Scope CurrentUser -AllowClobber
     
     - name: Run PSScriptAnalyzer
       shell: powershell
