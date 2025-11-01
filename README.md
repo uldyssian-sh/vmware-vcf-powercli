@@ -191,6 +191,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > ☁️ **vCloud Director Guide**: See [Getting Started with vCloud Director cmdlets](./docs/Getting-Started-vCloud-Director.md) for vCD automation examples.
 
+> 🔄 **Site Recovery Manager Guide**: See [Getting Started with Site Recovery Manager cmdlets](./docs/Getting-Started-Site-Recovery-Manager.md) for SRM disaster recovery automation.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
