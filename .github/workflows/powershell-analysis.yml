@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: '0 2 * * 1'  # Weekly security scan
 
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
 env:
   POWERSHELL_TELEMETRY_OPTOUT: 1
 
