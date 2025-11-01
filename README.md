@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![VCF Version](https://img.shields.io/badge/VCF-9.0-blue?style=flat-square)](https://docs.vmware.com/en/VMware-Cloud-Foundation/)
 
-**Comprehensive PowerCLI CMDLET reference guide organized by VMware Cloud Foundation (VCF) 9.0 components for enterprise automation and management.**
+**PowerCLI examples and reference guide for VMware Cloud Foundation (VCF) 9.0 components and related infrastructure management.**
 
 ## VCF 9.0 Enterprise Features
 
@@ -15,13 +15,13 @@
 - **Advanced Networking** - NSX 4.2.0 integration, micro-segmentation
 - **Storage Optimization** - vSAN 8.0 U3 performance enhancements
 
-## PowerCLI Automation Capabilities
+## PowerCLI Examples Included
 
-- **VCF Management** - Complete SDDC lifecycle automation
-- **Health Monitoring** - Automated health checks and reporting
-- **Certificate Management** - SSL certificate lifecycle automation
-- **Workload Domains** - Domain creation and management
-- **Infrastructure Operations** - Host, cluster, and network automation
+- **VCF Management** - SDDC Manager connection and basic operations
+- **Health Monitoring** - Health check examples and reporting scripts
+- **Infrastructure Operations** - Host, cluster, and network management examples
+- **Component Connections** - Connection examples for all VCF components
+- **Best Practices** - Security and error handling demonstrations
 
 ## Table of Contents
 
@@ -178,7 +178,7 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 ## Component Guides
 
-Comprehensive PowerCLI CMDLET reference guides organized by VMware components:
+PowerCLI examples and connection guides organized by VMware components:
 
 ### Core Infrastructure
 - **[vSphere & vSAN](./docs/Getting-Started-vSphere-vSAN.md)** - Virtual infrastructure management and hyper-converged storage
