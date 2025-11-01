@@ -201,6 +201,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > 📈 **vRealize Operations Guide**: See [Getting Started with vRealize Operations Manager cmdlets](./docs/Getting-Started-vRealize-Operations-Manager.md) for monitoring and analytics automation.
 
+> 🔄 **VMware HCX Guide**: See [Getting Started with VMware HCX cmdlets](./docs/Getting-Started-VMware-HCX.md) for hybrid cloud extension and migration automation.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
