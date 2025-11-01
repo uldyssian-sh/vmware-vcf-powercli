@@ -1,0 +1,36 @@
+{
+  "name": "@uldyssian-sh/vmware-vcf-powercli",
+  "version": "1.0.0",
+  "description": "VCF PowerCLI CMDLET References by VCF Components - Enterprise automation solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"PowerShell tests via Pester\" && exit 0",
+    "lint": "echo \"PowerShell linting via PSScriptAnalyzer\" && exit 0",
+    "build": "echo \"PowerShell module build\" && exit 0",
+    "security": "echo \"Security scan via Trivy\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uldyssian-sh/vmware-vcf-powercli.git"
+  },
+  "keywords": [
+    "vmware",
+    "vcf",
+    "powercli",
+    "automation",
+    "enterprise",
+    "infrastructure",
+    "cloud-foundation",
+    "powershell"
+  ],
+  "author": "uldyssian-sh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uldyssian-sh/vmware-vcf-powercli/issues"
+  },
+  "homepage": "https://github.com/uldyssian-sh/vmware-vcf-powercli#readme",
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  }
+}

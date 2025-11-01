@@ -1,0 +1,31 @@
+{
+  "VCF": {
+    "SDDCManager": "vcf-mgmt01.domain.local",
+    "Domain": "domain.local",
+    "Username": "administrator@vsphere.local"
+  },
+  "WorkloadDomains": [
+    {
+      "Name": "Management",
+      "Type": "MANAGEMENT",
+      "vCenter": "vcenter-mgmt.domain.local"
+    },
+    {
+      "Name": "Workload01",
+      "Type": "VI",
+      "vCenter": "vcenter-wld01.domain.local"
+    }
+  ],
+  "Settings": {
+    "LogLevel": "Info",
+    "Timeout": 300,
+    "RetryCount": 3,
+    "BackupConfig": true,
+    "LogPath": "C:\\Logs\\vcf-powercli.log"
+  },
+  "Automation": {
+    "HealthChecks": true,
+    "CertificateMonitoring": true,
+    "AutoRemediation": false
+  }
+}
