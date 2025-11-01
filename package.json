@@ -1,7 +1,7 @@
 {
   "name": "@uldyssian-sh/vmware-vcf-powercli",
   "version": "1.0.0",
-  "description": "VCF PowerCLI CMDLET References by VCF Components - Enterprise automation solution",
+  "description": "VMware Cloud Foundation PowerCLI Guide - Comprehensive reference and examples",
   "main": "index.js",
   "scripts": {
     "test": "echo \"PowerShell tests via Pester\" && exit 0",
