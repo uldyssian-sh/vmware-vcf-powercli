@@ -11,7 +11,10 @@
 
 Thank you to all contributors who have helped improve this project:
 
+- **actions-user** - Automated workflow contributions
 - **uldyssian-sh** - All initial development and maintenance
+- **LT** - Project contributions
+- **dependabot[bot]** - Automated dependency updates
 
 ## How to Contribute
 
