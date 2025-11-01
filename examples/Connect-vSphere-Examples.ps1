@@ -95,12 +95,13 @@ function Connect-vSphereSaveCredentials {
         [Parameter(Mandatory = $true)]
         [string]$User,
         [Parameter(Mandatory = $true)]
-        [string]$Password
+        [SecureString]$Password
     )
     
     try {
         # Connects to a server and save the credentials in the credential store
-        Connect-VIServer $Server -User $User -Password $Password -SaveCredentials
+        $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password))
+        Connect-VIServer $Server -User $User -Password $plainPassword -SaveCredentials
         Write-Host "Successfully connected to $Server and saved credentials" -ForegroundColor Green
     }
     catch {
