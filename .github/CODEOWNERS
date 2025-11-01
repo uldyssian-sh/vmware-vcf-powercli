@@ -12,3 +12,7 @@ docs/ @uldyssian-sh
 
 # GitHub workflows
 .github/ @uldyssian-sh
+
+# Dependabot and Actions
+.github/dependabot.yml @uldyssian-sh @dependabot[bot]
+.github/workflows/ @uldyssian-sh @actions-user
