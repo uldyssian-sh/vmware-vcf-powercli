@@ -28,7 +28,7 @@ jobs:
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
         Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
         Install-Module -Name Pester -MinimumVersion 5.0 -Force -Scope CurrentUser
-        Install-Module -Name VMware.PowerCLI -Force -Scope CurrentUser
+        Install-Module -Name VCF.PowerCLI -Force -Scope CurrentUser
     
     - name: 🔍 Run PSScriptAnalyzer
       shell: powershell

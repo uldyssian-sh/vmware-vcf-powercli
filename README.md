@@ -28,28 +28,28 @@ This repository provides production-ready PowerShell scripts and modules for com
 ## 🚀 Quick Start
 
 ```powershell
-# 1. Install VMware PowerCLI
-Install-Module -Name VMware.PowerCLI -Scope CurrentUser
+# 1. Install VCF PowerCLI
+Install-Module -Name VCF.PowerCLI -Scope CurrentUser
 
 # 2. Clone repository
 git clone https://github.com/uldyssian-sh/vmware-vcf-powercli.git
 cd vmware-vcf-powercli
 
-# 3. Connect to VCF SDDC Manager
+# 3. Connect to SDDC Manager
 $credential = Get-Credential
-.\examples\Connect-VCF.ps1 -Server "vcf-mgmt01.domain.local" -Credential $credential
+Connect-VCFManager -fqdn "vcf-mgmt01.domain.local" -credential $credential
 
-# 4. Run health check
-.\examples\Get-VCFHealth.ps1
+# 4. Get workload domains
+Get-VCFWorkloadDomain
 ```
 
 ## 💻 System Requirements
 
 | Component | Requirement |
 |-----------|-------------|
-| **Operating System** | Windows Server 2019/2022, Windows 10/11 |
-| **PowerShell** | 5.1+ or PowerShell Core 7.0+ |
-| **VMware PowerCLI** | 13.2 or later |
+| **Operating System** | Windows Server 2019/2022, Windows 10/11, Linux, macOS |
+| **PowerShell** | 7.2+ (PowerShell Core) |
+| **VCF PowerCLI** | 9.0.0.24798382 or later |
 | **VCF Version** | 9.0 or later |
 | **vSphere** | 8.0 U3 or later |
 | **Network** | HTTPS (443) access to SDDC Manager |
@@ -73,20 +73,20 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
 #### 🌐 Online Installation (Recommended)
 ```powershell
-# Install VMware PowerCLI
-Install-Module -Name VMware.PowerCLI -Scope CurrentUser -Force
+# Install VCF PowerCLI
+Install-Module -Name VCF.PowerCLI -Scope CurrentUser -Force
 
 # Verify installation
-Get-Module -Name VMware.PowerCLI -ListAvailable | Select-Object Name, Version
+Get-Module -Name VCF.PowerCLI -ListAvailable | Select-Object Name, Version
 ```
 
 #### 💾 Offline Installation
 ```powershell
 # Download modules
-Save-Module -Name VMware.PowerCLI -Path "C:\Temp\PowerCLI" -Repository PSGallery
+Save-Module -Name VCF.PowerCLI -Path "C:\Temp\VCF-PowerCLI" -Repository PSGallery
 
 # Install from local path
-Install-Module -Name VMware.PowerCLI -Repository PSGallery -Force
+Install-Module -Name VCF.PowerCLI -Repository PSGallery -Force
 ```
 
 ### ⚙️ Post-Installation Setup
