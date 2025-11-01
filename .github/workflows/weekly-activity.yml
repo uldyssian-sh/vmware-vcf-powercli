@@ -20,32 +20,35 @@ jobs:
       - name: Weekly Activity
         id: activity-check
         run: |
+          set -e
           echo "Weekly activity check completed"
           date > weekly-activity.log
-          echo "::set-output name=completed::true"
+          echo "completed=true" >> $GITHUB_OUTPUT
           
       - name: Commit changes
         id: commit-changes
         run: |
+          set -e
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
           if git diff --staged --quiet; then
             echo "No changes to commit"
-            echo "::set-output name=changes::false"
+            echo "changes=false" >> $GITHUB_OUTPUT
           else
             git commit -m "Weekly activity update"
-            echo "::set-output name=changes::true"
+            echo "changes=true" >> $GITHUB_OUTPUT
           fi
         continue-on-error: true
         
       - name: Push changes
         if: steps.commit-changes.outputs.changes == 'true'
         run: |
-          git push || {
+          set -e
+          if ! git push; then
             echo "Failed to push changes - this may be expected"
             exit 0
-          }
+          fi
         continue-on-error: true
         
       - name: Handle workflow failure

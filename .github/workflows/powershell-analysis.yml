@@ -53,7 +53,7 @@ jobs:
         }
         catch {
           Write-Error "PSScriptAnalyzer execution failed: $($_.Exception.Message)"
-          Write-Host "::set-output name=failed::true"
+          Write-Host "failed=true" >> $env:GITHUB_OUTPUT
           exit 1
         }
         
@@ -86,7 +86,7 @@ jobs:
         }
         catch {
           Write-Error "Pester test execution failed: $($_.Exception.Message)"
-          Write-Host "::set-output name=failed::true"
+          Write-Host "failed=true" >> $env:GITHUB_OUTPUT
           exit 1
         }
         

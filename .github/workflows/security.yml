@@ -33,6 +33,8 @@ jobs:
       - name: Handle scan failure
         if: failure() && steps.trivy-scan.outcome == 'failure'
         run: |
+          set -e
           echo "Security scan failed but continuing workflow"
+          echo "Check scan results for security issues"
           exit 0
 
