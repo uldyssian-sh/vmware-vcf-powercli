@@ -187,6 +187,8 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 
 > 📚 **More Examples**: See the [examples](./examples/) directory for comprehensive usage scenarios.
 
+> 📝 **vSphere & vSAN Guide**: See [Getting Started with vSphere and vSAN cmdlets](./docs/Getting-Started-vSphere-vSAN.md) for detailed connection examples.
+
 ## 🔒 Security
 
 ### 🔐 Security Features
