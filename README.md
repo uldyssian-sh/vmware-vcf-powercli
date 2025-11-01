@@ -34,9 +34,9 @@ This repository provides production-ready PowerShell scripts for managing VMware
 - PowerShell 7.0 or later (PowerShell Core)
 
 ### VMware PowerCLI Compatibility
-- VMware PowerCLI 13.0 or later
-- VMware Cloud Foundation 4.5 or later
-- VMware Cloud Foundation 5.0 or later
+- VMware PowerCLI 13.2 or later
+- VMware Cloud Foundation 9.0 or later
+- vSphere 8.0 U3 or later
 
 ## Installation
 
