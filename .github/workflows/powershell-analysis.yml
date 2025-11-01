@@ -34,27 +34,43 @@ jobs:
     - name: 🔍 Run PSScriptAnalyzer
       shell: powershell
       run: |
-        $results = Invoke-ScriptAnalyzer -Path . -Recurse -Settings ./PSScriptAnalyzerSettings.psd1
-        if ($results) {
-          Write-Host "❌ PSScriptAnalyzer found issues:" -ForegroundColor Red
-          $results | Format-Table -AutoSize
+        try {
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse -Settings ./PSScriptAnalyzerSettings.psd1 -ErrorAction Stop
+          if ($results) {
+            Write-Host "❌ PSScriptAnalyzer found issues:" -ForegroundColor Red
+            $results | Format-Table -AutoSize
+            exit 1
+          } else {
+            Write-Host "✅ PSScriptAnalyzer passed - No issues found" -ForegroundColor Green
+          }
+        }
+        catch {
+          Write-Error "PSScriptAnalyzer execution failed: $($_.Exception.Message)"
           exit 1
-        } else {
-          Write-Host "✅ PSScriptAnalyzer passed - No issues found" -ForegroundColor Green
         }
     
     - name: 🧪 Run Pester Tests
       shell: powershell
       run: |
-        if (Test-Path "./tests") {
-          $config = New-PesterConfiguration
-          $config.Run.Path = "./tests"
-          $config.TestResult.Enabled = $true
-          $config.TestResult.OutputPath = "test-results.xml"
-          $config.CodeCoverage.Enabled = $true
-          Invoke-Pester -Configuration $config
-        } else {
-          Write-Host "⚠️ No tests directory found" -ForegroundColor Yellow
+        try {
+          if (Test-Path "./tests") {
+            $config = New-PesterConfiguration
+            $config.Run.Path = "./tests"
+            $config.TestResult.Enabled = $true
+            $config.TestResult.OutputPath = "test-results.xml"
+            $config.CodeCoverage.Enabled = $true
+            $result = Invoke-Pester -Configuration $config -ErrorAction Stop
+            if ($result.FailedCount -gt 0) {
+              Write-Error "$($result.FailedCount) tests failed"
+              exit 1
+            }
+          } else {
+            Write-Host "⚠️ No tests directory found" -ForegroundColor Yellow
+          }
+        }
+        catch {
+          Write-Error "Pester test execution failed: $($_.Exception.Message)"
+          exit 1
         }
     
     - name: 📊 Upload Test Results
