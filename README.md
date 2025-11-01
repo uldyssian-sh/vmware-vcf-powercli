@@ -49,10 +49,10 @@ cd vmware-vcf-powercli
 
 # 3. Connect to SDDC Manager
 $credential = Get-Credential
-Connect-VCFManager -fqdn "vcf-mgmt01.domain.local" -credential $credential
+.\examples\Connect-VCF.ps1 -Server "vcf-mgmt01.domain.local" -Credential $credential
 
-# 4. Get workload domains
-Get-VCFWorkloadDomain
+# 4. Get inventory
+.\examples\Get-VCFInventory.ps1
 ```
 
 ## System Requirements
@@ -168,19 +168,10 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 .\examples\Get-VCFInventory.ps1 -OutputPath "C:\Reports\vcf-inventory.csv"
 
 # Perform health checks
-.\examples\Get-VCFHealth.ps1 -IncludeVMs
+.\examples\Get-VCFHealthStatus.ps1
 
 # Get system information
 .\examples\Get-VCFSystemInfo.ps1
-```
-
-### PowerCLI Automation
-```powershell
-# Get VCF system information
-.\examples\Get-VCFSystemInfo.ps1
-
-# Comprehensive health monitoring
-.\examples\Get-VCFHealthStatus.ps1 -IncludeDetails
 ```
 
 **More Examples**: See the [examples](./examples/) directory for comprehensive usage scenarios.
