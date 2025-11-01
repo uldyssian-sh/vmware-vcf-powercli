@@ -1,43 +1,81 @@
-name: PowerShell Analysis
+name: 🔍 Code Quality & Security
 
 on:
   push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly security scan
+
+env:
+  POWERSHELL_TELEMETRY_OPTOUT: 1
 
 jobs:
   powershell-analysis:
+    name: 🔍 PowerShell Analysis
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v4
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
-    - name: Install PowerShell modules
+    - name: 📦 Install PowerShell Modules
       shell: powershell
       run: |
+        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
         Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
-        Install-Module -Name Pester -Force -Scope CurrentUser
+        Install-Module -Name Pester -MinimumVersion 5.0 -Force -Scope CurrentUser
+        Install-Module -Name VMware.PowerCLI -Force -Scope CurrentUser
     
-    - name: Run PSScriptAnalyzer
+    - name: 🔍 Run PSScriptAnalyzer
       shell: powershell
       run: |
-        $results = Invoke-ScriptAnalyzer -Path . -Recurse -ReportSummary
+        $results = Invoke-ScriptAnalyzer -Path . -Recurse -Settings ./PSScriptAnalyzerSettings.psd1
         if ($results) {
-          $results | Format-Table
+          Write-Host "❌ PSScriptAnalyzer found issues:" -ForegroundColor Red
+          $results | Format-Table -AutoSize
           exit 1
+        } else {
+          Write-Host "✅ PSScriptAnalyzer passed - No issues found" -ForegroundColor Green
         }
     
-    - name: Run Pester tests
+    - name: 🧪 Run Pester Tests
       shell: powershell
       run: |
         if (Test-Path "./tests") {
-          Invoke-Pester -Path "./tests" -OutputFormat NUnitXml -OutputFile "test-results.xml"
+          $config = New-PesterConfiguration
+          $config.Run.Path = "./tests"
+          $config.TestResult.Enabled = $true
+          $config.TestResult.OutputPath = "test-results.xml"
+          $config.CodeCoverage.Enabled = $true
+          Invoke-Pester -Configuration $config
+        } else {
+          Write-Host "⚠️ No tests directory found" -ForegroundColor Yellow
         }
     
-    - name: Upload test results
-      uses: actions/upload-artifact@v3
+    - name: 📊 Upload Test Results
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results
         path: test-results.xml
+        retention-days: 30
+
+  security-scan:
+    name: 🛡️ Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+    
+    - name: 🔒 Run CodeQL Analysis
+      uses: github/codeql-action/init@v3
+      with:
+        languages: javascript
+    
+    - name: 🔍 Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3

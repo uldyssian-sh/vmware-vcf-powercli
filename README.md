@@ -1,132 +1,194 @@
-# VMware VCF PowerCLI
+# VMware Cloud Foundation PowerCLI Automation
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PowerShell Gallery](https://img.shields.io/powershellgallery/v/VMware.PowerCLI.svg)](https://www.powershellgallery.com/packages/VMware.PowerCLI)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=vmware-vcf-powercli&metric=security_rating)](https://sonarcloud.io/dashboard?id=vmware-vcf-powercli)
+![VMware](https://img.shields.io/badge/VMware-607078?style=for-the-badge&logo=vmware&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Version](https://img.shields.io/badge/VCF-9.0-blue?style=for-the-badge)
 
-Enterprise-grade PowerShell scripts and modules for VMware Cloud Foundation (VCF) management using PowerCLI.
+> **Enterprise-grade PowerShell automation scripts for VMware Cloud Foundation (VCF) 9.0 management and operations.**
 
-## Table of Contents
+## 🎯 Overview
 
-- [Overview](#overview)
-- [System Requirements](#system-requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage Examples](#usage-examples)
-- [Security](#security)
-- [Contributing](#contributing)
-- [License](#license)
+This repository provides production-ready PowerShell scripts and modules for comprehensive VMware Cloud Foundation management using PowerCLI. Designed for enterprise environments with security, reliability, and scalability in mind.
 
-## Overview
+## 📚 Table of Contents
 
-This repository provides production-ready PowerShell scripts for managing VMware Cloud Foundation environments. All scripts follow enterprise security standards and best practices.
+- [🎯 Overview](#-overview)
+- [💻 System Requirements](#-system-requirements)
+- [🚀 Quick Start](#-quick-start)
+- [🔧 Installation](#-installation)
+- [⚙️ Configuration](#-configuration)
+- [📝 Usage Examples](#-usage-examples)
+- [🔒 Security](#-security)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
 
-## System Requirements
+---
 
-### Supported Operating Systems
-- Windows Server 2019 (Build 17763) or later
-- Windows Server 2022 (Build 20348) or later
-- Windows 10 (Build 1809) or later
-- Windows 11 (Build 22000) or later
+## 🚀 Quick Start
 
-### PowerShell Requirements
-- PowerShell 5.1 (Windows PowerShell)
-- PowerShell 7.0 or later (PowerShell Core)
-
-### VMware PowerCLI Compatibility
-- VMware PowerCLI 13.2 or later
-- VMware Cloud Foundation 9.0 or later
-- vSphere 8.0 U3 or later
-
-## Installation
-
-### Prerequisites
-
-1. **Enable PowerShell Execution Policy**
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
-
-2. **Install NuGet Provider** (if not present)
-   ```powershell
-   Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-   ```
-
-3. **Trust PowerShell Gallery**
-   ```powershell
-   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-   ```
-
-### VMware PowerCLI Installation
-
-#### Method 1: PowerShell Gallery (Recommended)
 ```powershell
-# Install latest version
+# 1. Install VMware PowerCLI
 Install-Module -Name VMware.PowerCLI -Scope CurrentUser
 
-# Verify installation
-Get-Module -Name VMware.PowerCLI -ListAvailable
+# 2. Clone repository
+git clone https://github.com/uldyssian-sh/vmware-vcf-powercli.git
+cd vmware-vcf-powercli
+
+# 3. Connect to VCF SDDC Manager
+$credential = Get-Credential
+.\examples\Connect-VCF.ps1 -Server "vcf-mgmt01.domain.local" -Credential $credential
+
+# 4. Run health check
+.\examples\Get-VCFHealth.ps1
 ```
 
-#### Method 2: Offline Installation
-```powershell
-# Download from PowerShell Gallery
-Save-Module -Name VMware.PowerCLI -Path "C:\Temp\PowerCLI"
+## 💻 System Requirements
 
-# Install from downloaded files
+| Component | Requirement |
+|-----------|-------------|
+| **Operating System** | Windows Server 2019/2022, Windows 10/11 |
+| **PowerShell** | 5.1+ or PowerShell Core 7.0+ |
+| **VMware PowerCLI** | 13.2 or later |
+| **VCF Version** | 9.0 or later |
+| **vSphere** | 8.0 U3 or later |
+| **Network** | HTTPS (443) access to SDDC Manager |
+
+## 🔧 Installation
+
+### 📝 Prerequisites
+
+```powershell
+# 1. Set execution policy
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# 2. Install NuGet provider
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+
+# 3. Trust PowerShell Gallery
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+```
+
+### 📦 VMware PowerCLI Installation
+
+#### 🌐 Online Installation (Recommended)
+```powershell
+# Install VMware PowerCLI
+Install-Module -Name VMware.PowerCLI -Scope CurrentUser -Force
+
+# Verify installation
+Get-Module -Name VMware.PowerCLI -ListAvailable | Select-Object Name, Version
+```
+
+#### 💾 Offline Installation
+```powershell
+# Download modules
+Save-Module -Name VMware.PowerCLI -Path "C:\Temp\PowerCLI" -Repository PSGallery
+
+# Install from local path
 Install-Module -Name VMware.PowerCLI -Repository PSGallery -Force
 ```
 
-### Post-Installation Configuration
+### ⚙️ Post-Installation Setup
 
 ```powershell
-# Set PowerCLI configuration
-Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
-Set-PowerCLIConfiguration -ParticipateInCEIP $false -Confirm:$false
+# Configure PowerCLI settings
+Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false -Scope Session
+Set-PowerCLIConfiguration -ParticipateInCEIP $false -Confirm:$false -Scope Session
+Set-PowerCLIConfiguration -DefaultVIServerMode Multiple -Confirm:$false -Scope Session
 ```
 
-## Configuration
+## ⚙️ Configuration
 
-### Environment Variables
-Create a `.env` file (not tracked in git):
-```
-VCF_SDDC_MANAGER=vcf-mgmt01.domain.local
-VCF_USERNAME=administrator@vsphere.local
-VCF_DOMAIN=domain.local
-```
+### 🔐 Secure Credential Storage
 
-### Credential Management
 ```powershell
-# Store credentials securely
-$credential = Get-Credential
-$credential | Export-Clixml -Path "$env:USERPROFILE\vcf-creds.xml"
+# Method 1: Windows Credential Manager (Recommended)
+$credential = Get-Credential -Message "Enter VCF SDDC Manager credentials"
+$credential | Export-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xml"
 
-# Load credentials
-$credential = Import-Clixml -Path "$env:USERPROFILE\vcf-creds.xml"
+# Method 2: Environment Variables (Development only)
+$env:VCF_SERVER = "vcf-mgmt01.domain.local"
+$env:VCF_USERNAME = "administrator@vsphere.local"
 ```
 
-## Usage Examples
+### 📝 Environment Configuration
 
-See the [examples](./examples/) directory for comprehensive usage examples.
+Create `config.json` (excluded from git):
+```json
+{
+  "sddcManager": "vcf-mgmt01.domain.local",
+  "domain": "domain.local",
+  "logLevel": "Info",
+  "timeout": 300
+}
+```
 
-## Security
+## 📝 Usage Examples
 
-- All scripts follow PowerShell security best practices
-- Credentials are never stored in plain text
-- Input validation and error handling implemented
-- Logging capabilities for audit trails
-- No hardcoded sensitive information
+### 🔗 Basic Connection
+```powershell
+# Load stored credentials
+$credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xml"
 
-### Security Scanning
-This repository is scanned with:
-- PowerShell Script Analyzer (PSScriptAnalyzer)
-- Bandit security linter
-- SonarCloud security analysis
+# Connect to SDDC Manager
+.\examples\Connect-VCF.ps1 -Server "vcf-mgmt01.domain.local" -Credential $credential
+```
 
-## Contributing
+### 📈 Infrastructure Monitoring
+```powershell
+# Get comprehensive inventory
+.\examples\Get-VCFInventory.ps1 -OutputPath "C:\Reports\vcf-inventory.csv"
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+# Perform health checks
+.\examples\Get-VCFHealth.ps1 -IncludeVMs
+```
 
-## License
+> 📚 **More Examples**: See the [examples](./examples/) directory for comprehensive usage scenarios.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🔒 Security
+
+### 🔐 Security Features
+- ✅ **Secure Credential Storage** - Windows Credential Manager integration
+- ✅ **Input Validation** - Comprehensive parameter validation
+- ✅ **Error Handling** - Robust exception management
+- ✅ **Audit Logging** - Detailed operation logging
+- ✅ **No Hardcoded Secrets** - Zero embedded credentials
+
+### 🔍 Security Scanning
+| Tool | Status | Purpose |
+|------|--------|----------|
+| PSScriptAnalyzer | ✅ Active | PowerShell best practices |
+| GitHub CodeQL | ✅ Active | Security vulnerability detection |
+| Dependabot | ✅ Active | Dependency security updates |
+
+### 🚨 Security Guidelines
+- Never commit credentials or API keys
+- Use secure credential storage methods
+- Validate all input parameters
+- Implement proper error handling
+- Enable audit logging for compliance
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### 🐛 Issues & Feature Requests
+- 🐛 [Report Bug](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues/new?template=bug_report.md)
+- ✨ [Request Feature](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues/new?template=feature_request.md)
+
+## 📜 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Made with ❤️ for VMware Cloud Foundation automation**
+
+[⬆ Back to Top](#vmware-cloud-foundation-powercli-automation)
+
+</div>
