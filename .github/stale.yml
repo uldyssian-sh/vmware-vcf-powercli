@@ -28,4 +28,4 @@ closeComment: >
   this issue is still relevant, please reopen it with additional context.
 
 # Limit the number of actions per hour
-limitPerRun: 30
+limitPerRun: 30# Updated Sun Nov  9 12:50:15 CET 2025

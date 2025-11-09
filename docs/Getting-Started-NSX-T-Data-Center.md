@@ -40,4 +40,4 @@ You can READ objects by using `Get-NsxtGlobalManagerService` cmdlet. See example
 # Retrieves the binding for the specified service and invokes a service operation.
 $service = Get-NsxtGlobalManagerService com.vmware.nsx_global_policy.global_infra.domains.groups
 $service.list("domain_id")
-```
+```# Updated Sun Nov  9 12:50:15 CET 2025

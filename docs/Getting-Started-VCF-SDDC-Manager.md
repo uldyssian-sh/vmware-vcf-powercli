@@ -27,4 +27,4 @@ You can READ objects by using `Get-SddcCluster` cmdlet. See example below:
 ```powershell
 # Retrieve all Cluster objects.
 PS C:\> Get-SddcCluster
-```
+```# Updated Sun Nov  9 12:50:15 CET 2025

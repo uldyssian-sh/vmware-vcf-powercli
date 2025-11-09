@@ -27,4 +27,4 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## Recognition
 
-All contributors are recognized for their valuable contributions to the VMware Cloud Foundation PowerCLI Guide project.
+All contributors are recognized for their valuable contributions to the VMware Cloud Foundation PowerCLI Guide project.# Updated Sun Nov  9 12:50:15 CET 2025

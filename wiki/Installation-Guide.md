@@ -27,4 +27,4 @@ Set-PowerCLIConfiguration -ParticipateInCEIP $false -Confirm:$false
 ```powershell
 # Verify installation
 Get-Module -Name VMware.PowerCLI, VCF.PowerCLI -ListAvailable
-```
+```# Updated Sun Nov  9 12:50:15 CET 2025

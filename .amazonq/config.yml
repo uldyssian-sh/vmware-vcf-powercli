@@ -37,4 +37,4 @@ chat_context:
   include_readme: true
   include_docs: true
   include_examples: true
-  max_context_files: 15
+  max_context_files: 15# Updated Sun Nov  9 12:50:15 CET 2025

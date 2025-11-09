@@ -40,4 +40,4 @@ You can READ objects by using `Get-VmcSddc` cmdlet. See example below:
 ```powershell
 # Retrieves the deleted and non-deleted SDDCs named "SddcName".
 Get-VmcSddc -Name "SddcName" -IncludeDeleted
-```
+```# Updated Sun Nov  9 12:50:15 CET 2025
