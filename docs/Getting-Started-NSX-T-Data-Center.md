@@ -41,3 +41,4 @@ You can READ objects by using `Get-NsxtGlobalManagerService` cmdlet. See example
 $service = Get-NsxtGlobalManagerService com.vmware.nsx_global_policy.global_infra.domains.groups
 $service.list("domain_id")
 ```# Updated Sun Nov  9 12:50:15 CET 2025
+# Updated Sun Nov  9 12:52:11 CET 2025

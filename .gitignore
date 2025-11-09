@@ -64,4 +64,4 @@ docs/_build/
 docs/site/
 
 # PowerShell Gallery
-*.nuspec
+*.nuspec# Updated Sun Nov  9 12:52:11 CET 2025

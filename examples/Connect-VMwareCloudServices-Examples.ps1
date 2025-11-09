@@ -189,4 +189,4 @@ function Test-VcsConnection {
         Write-Host "❌ VCS connection test failed: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }
-}
+}# Updated Sun Nov  9 12:52:11 CET 2025

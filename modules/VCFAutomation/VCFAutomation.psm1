@@ -59,4 +59,4 @@ function Get-VCFEnvironmentHealth {
     }
 }
 
-Export-ModuleMember -Function Connect-VCFEnvironment, Get-VCFEnvironmentHealth
+Export-ModuleMember -Function Connect-VCFEnvironment, Get-VCFEnvironmentHealth# Updated Sun Nov  9 12:52:11 CET 2025

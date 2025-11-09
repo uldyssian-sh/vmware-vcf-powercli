@@ -233,4 +233,4 @@ function Test-VmcConnection {
         Write-Host "❌ VMC connection test failed: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }
-}
+}# Updated Sun Nov  9 12:52:11 CET 2025

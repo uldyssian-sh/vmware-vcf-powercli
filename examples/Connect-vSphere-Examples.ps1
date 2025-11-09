@@ -185,4 +185,4 @@ function Get-vSphereHosts {
     catch {
         Write-Error "Failed to retrieve hosts: $($_.Exception.Message)"
     }
-}
+}# Updated Sun Nov  9 12:52:11 CET 2025

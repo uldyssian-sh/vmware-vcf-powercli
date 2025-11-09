@@ -188,4 +188,4 @@ function Get-vCloudDirectorvApps {
     catch {
         Write-Error "Failed to retrieve vApps: $($_.Exception.Message)"
     }
-}
+}# Updated Sun Nov  9 12:52:11 CET 2025

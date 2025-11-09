@@ -23,3 +23,4 @@ $credential = Import-Clixml -Path "$env:USERPROFILE\Documents\vcf-credentials.xm
 $env:VCF_SERVER = "vcf-mgmt01.domain.local"
 $env:VCF_USERNAME = "administrator@vsphere.local"
 ```# Updated Sun Nov  9 12:50:15 CET 2025
+# Updated Sun Nov  9 12:52:11 CET 2025

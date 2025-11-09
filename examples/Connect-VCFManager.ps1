@@ -48,4 +48,4 @@ try {
 catch {
     Write-Error "Failed to connect to SDDC Manager: $($_.Exception.Message)"
     throw
-}
+}# Updated Sun Nov  9 12:52:11 CET 2025

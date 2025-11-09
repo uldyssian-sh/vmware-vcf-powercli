@@ -73,4 +73,4 @@ try {
 catch {
     Write-Error "Prerequisites installation failed: $($_.Exception.Message)"
     throw
-}
+}# Updated Sun Nov  9 12:52:11 CET 2025
