@@ -1,4 +1,10 @@
-# VMware Cloud Foundation PowerCLI Guide
+# vmware-vcf-powercli
+
+[![AI-Powered](https://img.shields.io/badge/AI-Powered-blue?style=flat-square&logo=openai)](https://github.com/features/copilot)
+[![CodeQL](https://github.com/uldyssian-sh/vmware-vcf-powercli/workflows/AI%20CodeQL%20Analysis/badge.svg)](https://github.com/uldyssian-sh/vmware-vcf-powercli/actions)
+[![AI Assistant](https://img.shields.io/badge/AI-Assistant-green?style=flat-square)](https://github.com/uldyssian-sh/vmware-vcf-powercli/actions)
+[![Dependabot](https://img.shields.io/badge/Dependabot-AI-orange?style=flat-square)](https://github.com/uldyssian-sh/vmware-vcf-powercli/network/dependencies)
+
 
 [![VMware](https://img.shields.io/badge/VMware-607078?style=flat-square&logo=vmware&logoColor=white)](https://www.vmware.com/)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)](https://docs.microsoft.com/en-us/powershell/)
