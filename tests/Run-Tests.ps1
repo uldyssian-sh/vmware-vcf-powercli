@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 <#
 .SYNOPSIS
     Run all VCF PowerCLI tests

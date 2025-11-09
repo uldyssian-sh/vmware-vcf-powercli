@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware Cloud Services connection examples

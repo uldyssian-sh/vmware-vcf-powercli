@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 Describe "VCF Integration Tests" {
     Context "Full VCF Workflow" {
         It "Should complete end-to-end workflow" {

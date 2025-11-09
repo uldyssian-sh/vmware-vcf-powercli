@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 <#
 .SYNOPSIS
     Connect to VMware Cloud Foundation SDDC Manager

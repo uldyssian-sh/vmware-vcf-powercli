@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 <#
 .SYNOPSIS
     Install VMware Cloud Foundation PowerCLI prerequisites
