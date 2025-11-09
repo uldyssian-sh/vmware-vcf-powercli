@@ -249,7 +249,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 [Back to Top](#vmware-cloud-foundation-powercli-guide)
 
 
-## 🤖 AI-Enhanced Repository
 
 **FREE GitHub AI Features:**
 - 🤖 GitHub Copilot integration
