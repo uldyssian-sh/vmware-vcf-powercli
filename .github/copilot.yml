@@ -1,0 +1,5 @@
+# GitHub Copilot configuration
+suggestions: true
+chat: true
+code_completion: true
+inline_suggestions: true
