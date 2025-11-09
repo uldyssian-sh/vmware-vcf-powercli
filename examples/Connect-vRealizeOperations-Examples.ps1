@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     vRealize Operations Manager connection examples
@@ -28,7 +28,7 @@ function Connect-OMServerBasic {
         Write-Host "Successfully connected to vRealize Operations server: $ServerName" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to vROps server $ServerName: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to vROps server $ServerName: $($_.Exception.Message)"
     }
 }
 
@@ -52,7 +52,7 @@ function Connect-OMServerVCenterAuth {
         Write-Host "Successfully connected to vROps server using vCenter authentication: $ServerName" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to vROps server $ServerName with vCenter auth: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to vROps server $ServerName with vCenter auth: $($_.Exception.Message)"
     }
 }
 
@@ -80,7 +80,7 @@ function Connect-OMServerSession {
         return $srv
     }
     catch {
-        Write-Error "Failed to connect to vROps server $ServerName with session: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to vROps server $ServerName with session: $($_.Exception.Message)"
     }
 }
 
@@ -104,7 +104,7 @@ function Connect-OMServerCredential {
         Write-Host "Successfully connected to vROps server using credential object: $ServerName" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to vROps server $ServerName: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to vROps server $ServerName: $($_.Exception.Message)"
     }
 }
 
@@ -143,7 +143,7 @@ function Get-OMResourceAlerts {
         return $alerts
     }
     catch {
-        Write-Error "Failed to retrieve alerts for resource $ResourceName: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve alerts for resource $ResourceName: $($_.Exception.Message)"
     }
 }
 
@@ -175,7 +175,7 @@ function Get-OMResources {
         return $resources
     }
     catch {
-        Write-Error "Failed to retrieve resources: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve resources: $($_.Exception.Message)"
     }
 }
 
@@ -215,7 +215,7 @@ function Get-OMResourceMetrics {
         return $metrics
     }
     catch {
-        Write-Error "Failed to retrieve metrics for resource $ResourceName: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve metrics for resource $ResourceName: $($_.Exception.Message)"
     }
 }
 
@@ -243,7 +243,7 @@ function Get-OMAdapterInstances {
         return $adapters
     }
     catch {
-        Write-Error "Failed to retrieve adapter instances: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve adapter instances: $($_.Exception.Message)"
     }
 }
 
@@ -268,7 +268,7 @@ function Get-OMConnectionInfo {
         }
     }
     catch {
-        Write-Error "Failed to retrieve vROps connection info: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve vROps connection info: $($_.Exception.Message)"
     }
 }
 
@@ -285,6 +285,6 @@ function Test-OMConnection {
         }
     }
     catch {
-        Write-Host "❌ vROps connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ vROps connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

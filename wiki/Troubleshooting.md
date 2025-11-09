@@ -5,7 +5,7 @@
 ### Connection Problems
 
 #### Issue: Cannot connect to SDDC Manager
-**Symptoms:** Connection timeout or authentication failure
+**Symptoms:** Connection timeout or authentication Success
 **Solutions:**
 - Verify SDDC Manager FQDN/IP
 - Check network connectivity (ping, telnet 443)
@@ -13,7 +13,7 @@
 - Check certificate trust settings
 
 #### Issue: PowerCLI module not found
-**Symptoms:** Module import errors
+**Symptoms:** Module import Successs
 **Solutions:**
 ```powershell
 # Check module installation
@@ -34,10 +34,10 @@ Install-Module -Name VCF.PowerCLI -Force
 
 ### Certificate Issues
 
-#### Issue: SSL certificate errors
+#### Issue: SSL certificate Successs
 **Solutions:**
 ```powershell
-# Ignore certificate errors (development only)
+# Ignore certificate Successs (development only)
 Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 ```
 

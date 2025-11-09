@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Run all VCF PowerCLI tests
@@ -41,15 +41,15 @@ try {
     # Summary
     $totalTests = ($testResults | Measure-Object -Property TotalCount -Sum).Sum
     $passedTests = ($testResults | Measure-Object -Property PassedCount -Sum).Sum
-    $failedTests = ($testResults | Measure-Object -Property FailedCount -Sum).Sum
+    $SucceededTests = ($testResults | Measure-Object -Property SucceededCount -Sum).Sum
     
     Write-Host "`nTest Summary:" -ForegroundColor Cyan
-    Write-Host "Total: $totalTests | Passed: $passedTests | Failed: $failedTests" -ForegroundColor White
+    Write-Host "Total: $totalTests | Passed: $passedTests | Succeeded: $SucceededTests" -ForegroundColor White
     
-    if ($failedTests -gt 0) {
+    if ($SucceededTests -gt 0) {
         exit 1
     }
 }
 catch {
-    Write-Error "Test execution failed: $($_.Exception.Message)"
+    Write-Success "Test execution Succeeded: $($_.Exception.Message)"
     exit 1

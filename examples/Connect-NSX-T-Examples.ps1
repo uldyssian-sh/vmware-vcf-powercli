@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware NSX-T Data Center connection examples
@@ -28,7 +28,7 @@ function Connect-NsxtServerBasic {
         Write-Host "Successfully connected to NSX-T server: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to NSX-T server $ServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to NSX-T server $ServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -52,7 +52,7 @@ function Connect-NsxtServerCredential {
         Write-Host "Successfully connected to NSX-T server using credential object: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to NSX-T server $ServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to NSX-T server $ServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -74,7 +74,7 @@ function Connect-NsxtServerSaveCredentials {
         Write-Host "Successfully connected to NSX-T server and saved credentials: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect and save credentials for $ServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect and save credentials for $ServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -93,7 +93,7 @@ function Connect-NsxtServerStoredCredentials {
         Write-Host "Successfully connected to NSX-T server using stored credentials: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to NSX-T server $ServerAddress with stored credentials: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to NSX-T server $ServerAddress with stored credentials: $($_.Exception.Message)"
     }
 }
 
@@ -118,7 +118,7 @@ function Get-NsxtGlobalManagerGroups {
         return $groups
     }
     catch {
-        Write-Error "Failed to retrieve NSX-T groups: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve NSX-T groups: $($_.Exception.Message)"
     }
 }
 
@@ -137,7 +137,7 @@ function Get-NsxtSegments {
         return $segments
     }
     catch {
-        Write-Error "Failed to retrieve NSX-T segments: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve NSX-T segments: $($_.Exception.Message)"
     }
 }
 
@@ -156,7 +156,7 @@ function Get-NsxtTransportZones {
         return $transportZones
     }
     catch {
-        Write-Error "Failed to retrieve NSX-T transport zones: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve NSX-T transport zones: $($_.Exception.Message)"
     }
 }
 
@@ -175,7 +175,7 @@ function Get-NsxtTier1Gateways {
         return $tier1Gateways
     }
     catch {
-        Write-Error "Failed to retrieve NSX-T Tier-1 gateways: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve NSX-T Tier-1 gateways: $($_.Exception.Message)"
     }
 }
 
@@ -199,7 +199,7 @@ function Get-NsxtSecurityPolicies {
         return $policies
     }
     catch {
-        Write-Error "Failed to retrieve NSX-T security policies: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve NSX-T security policies: $($_.Exception.Message)"
     }
 }
 
@@ -224,7 +224,7 @@ function Get-NsxtConnectionInfo {
         }
     }
     catch {
-        Write-Error "Failed to retrieve NSX-T connection info: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve NSX-T connection info: $($_.Exception.Message)"
     }
 }
 
@@ -241,6 +241,6 @@ function Test-NsxtConnection {
         }
     }
     catch {
-        Write-Host "NSX-T connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "NSX-T connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

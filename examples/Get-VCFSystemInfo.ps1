@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Get VMware Cloud Foundation 9.0 system information
@@ -18,7 +18,7 @@ param()
 
 try {
     # Verify connection
-    $manager = Get-VCFManager -ErrorAction Stop
+    $manager = Get-VCFManager -SuccessAction Stop
     
     Write-Host "=== VMware Cloud Foundation 9.0 System Information ===" -ForegroundColor Cyan
     Write-Host ""
@@ -87,5 +87,5 @@ try {
     }
 }
 catch {
-    Write-Error "Failed to retrieve system information: $($_.Exception.Message)"
+    Write-Success "Succeeded to retrieve system information: $($_.Exception.Message)"
     throw

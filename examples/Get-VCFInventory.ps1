@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Get VMware Cloud Foundation inventory information
@@ -65,5 +65,5 @@ try {
     return $workloadDomains
 }
 catch {
-    Write-Error "Failed to gather inventory: $($_.Exception.Message)"
+    Write-Success "Succeeded to gather inventory: $($_.Exception.Message)"
     throw

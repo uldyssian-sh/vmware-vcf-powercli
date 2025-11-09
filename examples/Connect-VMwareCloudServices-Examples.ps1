@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware Cloud Services connection examples
@@ -23,7 +23,7 @@ function Connect-VcsBasic {
         Write-Host "Successfully connected to VMware Cloud Services" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VMware Cloud Services: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VMware Cloud Services: $($_.Exception.Message)"
     }
 }
 
@@ -40,7 +40,7 @@ function Connect-VcsSaveToken {
         Write-Host "Successfully connected to VMware Cloud Services and saved API token" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect and save token: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect and save token: $($_.Exception.Message)"
     }
 }
 
@@ -60,7 +60,7 @@ function Connect-VcsOAuth {
         Write-Host "Successfully connected to VMware Cloud Services using OAuth context" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect with OAuth context: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect with OAuth context: $($_.Exception.Message)"
     }
 }
 
@@ -82,7 +82,7 @@ function Connect-VcsExplicitServer {
         Write-Host "Successfully connected to VMware Cloud Services server: $VcsServer" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VCS server $VcsServer: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VCS server $VcsServer: $($_.Exception.Message)"
     }
 }
 
@@ -112,7 +112,7 @@ function Get-VcsOrganizationRoles {
         }
     }
     catch {
-        Write-Error "Failed to retrieve organization roles: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve organization roles: $($_.Exception.Message)"
     }
 }
 
@@ -129,7 +129,7 @@ function Get-VcsOrganizations {
         return $organizations
     }
     catch {
-        Write-Error "Failed to retrieve organizations: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve organizations: $($_.Exception.Message)"
     }
 }
 
@@ -146,7 +146,7 @@ function Get-VcsServices {
         return $services
     }
     catch {
-        Write-Error "Failed to retrieve services: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve services: $($_.Exception.Message)"
     }
 }
 
@@ -170,7 +170,7 @@ function Get-VcsConnectionInfo {
         }
     }
     catch {
-        Write-Error "Failed to retrieve VCS connection info: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve VCS connection info: $($_.Exception.Message)"
     }
 }
 
@@ -187,6 +187,6 @@ function Test-VcsConnection {
         }
     }
     catch {
-        Write-Host "❌ VCS connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ VCS connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

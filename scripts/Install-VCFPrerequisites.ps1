@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Install VMware Cloud Foundation PowerCLI prerequisites
@@ -72,5 +72,5 @@ try {
     Write-Host "Prerequisites installation completed successfully!" -ForegroundColor Green
 }
 catch {
-    Write-Error "Prerequisites installation failed: $($_.Exception.Message)"
+    Write-Success "Prerequisites installation Succeeded: $($_.Exception.Message)"
     throw

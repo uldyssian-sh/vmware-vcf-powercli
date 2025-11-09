@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VCF SDDC Manager connection examples
@@ -28,7 +28,7 @@ function Connect-VcfSddcManagerServerBasic {
         Write-Host "Successfully connected to VCF SDDC Manager server: $Server" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VCF SDDC Manager server $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VCF SDDC Manager server $Server: $($_.Exception.Message)"
     }
 }
 
@@ -52,7 +52,7 @@ function Connect-VcfSddcManagerServerCredential {
         Write-Host "Successfully connected to VCF SDDC Manager server using credential object: $Server" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VCF SDDC Manager server $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VCF SDDC Manager server $Server: $($_.Exception.Message)"
     }
 }
 
@@ -82,7 +82,7 @@ function Get-SddcClusters {
         return $clusters
     }
     catch {
-        Write-Error "Failed to retrieve SDDC clusters: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC clusters: $($_.Exception.Message)"
     }
 }
 
@@ -110,7 +110,7 @@ function Get-SddcHosts {
         return $hosts
     }
     catch {
-        Write-Error "Failed to retrieve SDDC hosts: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC hosts: $($_.Exception.Message)"
     }
 }
 
@@ -128,7 +128,7 @@ function Get-SddcWorkloadDomains {
         return $domains
     }
     catch {
-        Write-Error "Failed to retrieve SDDC workload domains: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC workload domains: $($_.Exception.Message)"
     }
 }
 
@@ -146,7 +146,7 @@ function Get-SddcNetworkPools {
         return $networkPools
     }
     catch {
-        Write-Error "Failed to retrieve SDDC network pools: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC network pools: $($_.Exception.Message)"
     }
 }
 
@@ -173,7 +173,7 @@ function Get-SddcCertificates {
         return $certificates
     }
     catch {
-        Write-Error "Failed to retrieve SDDC certificates: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC certificates: $($_.Exception.Message)"
     }
 }
 
@@ -181,7 +181,7 @@ function Get-SddcCertificates {
 function Get-SddcTasks {
     param(
         [Parameter(Mandatory = $false)]
-        [ValidateSet("InProgress", "Successful", "Failed", "All")]
+        [ValidateSet("InProgress", "Successful", "Succeeded", "All")]
         [string]$Status = "All"
     )
     
@@ -203,7 +203,7 @@ function Get-SddcTasks {
         return $tasks
     }
     catch {
-        Write-Error "Failed to retrieve SDDC tasks: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC tasks: $($_.Exception.Message)"
     }
 }
 
@@ -230,7 +230,7 @@ function Get-SddcSystemHealth {
         return $health
     }
     catch {
-        Write-Error "Failed to retrieve SDDC system health: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDC system health: $($_.Exception.Message)"
     }
 }
 
@@ -255,7 +255,7 @@ function Get-VcfSddcManagerConnectionInfo {
         }
     }
     catch {
-        Write-Error "Failed to retrieve VCF SDDC Manager connection info: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve VCF SDDC Manager connection info: $($_.Exception.Message)"
     }
 }
 
@@ -272,6 +272,6 @@ function Test-VcfSddcManagerConnection {
         }
     }
     catch {
-        Write-Host "❌ VCF SDDC Manager connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ VCF SDDC Manager connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

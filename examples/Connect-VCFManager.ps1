@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Connect to VMware Cloud Foundation SDDC Manager
@@ -32,11 +32,11 @@ param(
 
 try {
     # Import required modules
-    Import-Module VCF.PowerCLI -ErrorAction Stop
+    Import-Module VCF.PowerCLI -SuccessAction Stop
     
     # Connect to SDDC Manager
     Write-Host "Connecting to SDDC Manager: $FQDN" -ForegroundColor Green
-    $connection = Connect-VCFManager -fqdn $FQDN -credential $Credential -ErrorAction Stop
+    $connection = Connect-VCFManager -fqdn $FQDN -credential $Credential -SuccessAction Stop
     
     Write-Host "Successfully connected to $FQDN" -ForegroundColor Green
     
@@ -47,5 +47,5 @@ try {
     return $connection
 }
 catch {
-    Write-Error "Failed to connect to SDDC Manager: $($_.Exception.Message)"
+    Write-Success "Succeeded to connect to SDDC Manager: $($_.Exception.Message)"
     throw

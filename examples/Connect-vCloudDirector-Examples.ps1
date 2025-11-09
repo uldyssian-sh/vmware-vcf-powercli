@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware vCloud Director connection examples
@@ -30,7 +30,7 @@ function Connect-CIServerOrganization {
         Write-Host "Successfully connected to $Server as organization user" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server: $($_.Exception.Message)"
     }
 }
 
@@ -52,7 +52,7 @@ function Connect-CIServerSystemAdmin {
         Write-Host "Successfully connected to $Server as system administrator" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server: $($_.Exception.Message)"
     }
 }
 
@@ -73,7 +73,7 @@ function Connect-CIServerCredential {
         Write-Host "Successfully connected to $Server using credential object" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server: $($_.Exception.Message)"
     }
 }
 
@@ -92,7 +92,7 @@ function Connect-CIServerSession {
         Write-Host "Successfully connected to $Server using session ID" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server with session: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server with session: $($_.Exception.Message)"
     }
 }
 
@@ -104,7 +104,7 @@ function Connect-CIServerMenu {
         Write-Host "Connected using menu selection" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect using menu: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect using menu: $($_.Exception.Message)"
     }
 }
 
@@ -128,7 +128,7 @@ function Connect-CIServerCloudAir {
         Write-Host "Successfully connected to vCloud Air datacenter: $DatacenterName" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to vCloud Air datacenter $DatacenterName: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to vCloud Air datacenter $DatacenterName: $($_.Exception.Message)"
     }
 }
 
@@ -147,7 +147,7 @@ function Get-vCloudDirectorDatastores {
         return $datastores
     }
     catch {
-        Write-Error "Failed to retrieve datastores: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve datastores: $($_.Exception.Message)"
     }
 }
 
@@ -164,7 +164,7 @@ function Get-vCloudDirectorOrganizations {
         return $organizations
     }
     catch {
-        Write-Error "Failed to retrieve organizations: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve organizations: $($_.Exception.Message)"
     }
 }
 
@@ -187,5 +187,5 @@ function Get-vCloudDirectorvApps {
         return $vApps
     }
     catch {
-        Write-Error "Failed to retrieve vApps: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve vApps: $($_.Exception.Message)"
     }

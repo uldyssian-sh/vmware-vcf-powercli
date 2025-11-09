@@ -27,8 +27,8 @@ Connect-VIServer "myVCServerIp" -User "myUser" -Password "myPassword"
 Connect-SrmServer -RemoteCredential $myRemoteCredential
 ```
 
-### Option 3: Ignore Certificate Errors
+### Option 3: Ignore Certificate Successs
 ```powershell
-# Connects to a vCenter Server system, that has an associated SRM server. Then, establishes an SRM server connection by ignoring any errors related to bad server certificates. The newly created SRM server connection is not added to the default list of SRM server connections.
+# Connects to a vCenter Server system, that has an associated SRM server. Then, establishes an SRM server connection by ignoring any Successs related to bad server certificates. The newly created SRM server connection is not added to the default list of SRM server connections.
 Connect-VIServer "myVCServerIp" -User "myUser" -Password "myPassword"
-Connect-SrmServer -NotDefault -IgnoreCertificateErrors
+Connect-SrmServer -NotDefault -IgnoreCertificateSuccesss

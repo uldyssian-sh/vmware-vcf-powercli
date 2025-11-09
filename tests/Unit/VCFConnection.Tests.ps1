@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 Describe "VCF Connection Tests" {
     Context "Connect-VCFManager" {
         It "Should connect with valid credentials" {

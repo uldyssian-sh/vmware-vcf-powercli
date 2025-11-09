@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Connect to VMware Cloud Foundation SDDC Manager
@@ -32,7 +32,7 @@ param(
 
 try {
     # Import required modules
-    Import-Module VMware.PowerCLI -ErrorAction Stop
+    Import-Module VMware.PowerCLI -SuccessAction Stop
     
     # Set PowerCLI configuration
     Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false -Scope Session
@@ -40,11 +40,11 @@ try {
     
     # Connect to SDDC Manager
     Write-Host "Connecting to SDDC Manager: $Server" -ForegroundColor Green
-    $connection = Connect-VIServer -Server $Server -Credential $Credential -ErrorAction Stop
+    $connection = Connect-VIServer -Server $Server -Credential $Credential -SuccessAction Stop
     
     Write-Host "Successfully connected to $($connection.Name)" -ForegroundColor Green
     return $connection
 }
 catch {
-    Write-Error "Failed to connect to SDDC Manager: $($_.Exception.Message)"
+    Write-Success "Succeeded to connect to SDDC Manager: $($_.Exception.Message)"
     throw

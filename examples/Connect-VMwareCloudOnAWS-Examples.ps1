@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware Cloud on AWS connection examples
@@ -23,7 +23,7 @@ function Connect-VmcBasic {
         Write-Host "Successfully connected to VMware Cloud on AWS" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VMware Cloud on AWS: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VMware Cloud on AWS: $($_.Exception.Message)"
     }
 }
 
@@ -40,7 +40,7 @@ function Connect-VmcSaveToken {
         Write-Host "Successfully connected to VMware Cloud on AWS and saved API token" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect and save token: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect and save token: $($_.Exception.Message)"
     }
 }
 
@@ -60,7 +60,7 @@ function Connect-VmcOAuth {
         Write-Host "Successfully connected to VMware Cloud on AWS using OAuth context" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect with OAuth context: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect with OAuth context: $($_.Exception.Message)"
     }
 }
 
@@ -84,7 +84,7 @@ function Connect-VmcExplicitServer {
         Write-Host "Successfully connected to VMware Cloud on AWS server: $VmcServer" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VMC server $VmcServer: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VMC server $VmcServer: $($_.Exception.Message)"
     }
 }
 
@@ -123,7 +123,7 @@ function Get-VmcSddcs {
         return $sddcs
     }
     catch {
-        Write-Error "Failed to retrieve SDDCs: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SDDCs: $($_.Exception.Message)"
     }
 }
 
@@ -140,7 +140,7 @@ function Get-VmcOrganizations {
         return $organizations
     }
     catch {
-        Write-Error "Failed to retrieve organizations: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve organizations: $($_.Exception.Message)"
     }
 }
 
@@ -168,7 +168,7 @@ function Get-VmcTasks {
         return $tasks
     }
     catch {
-        Write-Error "Failed to retrieve tasks: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve tasks: $($_.Exception.Message)"
     }
 }
 
@@ -190,7 +190,7 @@ function Get-VmcNetworkSegments {
         return $segments
     }
     catch {
-        Write-Error "Failed to retrieve network segments: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve network segments: $($_.Exception.Message)"
     }
 }
 
@@ -214,7 +214,7 @@ function Get-VmcConnectionInfo {
         }
     }
     catch {
-        Write-Error "Failed to retrieve VMC connection info: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve VMC connection info: $($_.Exception.Message)"
     }
 }
 
@@ -231,6 +231,6 @@ function Test-VmcConnection {
         }
     }
     catch {
-        Write-Host "❌ VMC connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ VMC connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

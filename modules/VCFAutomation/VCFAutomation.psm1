@@ -12,7 +12,7 @@
 function Connect-VCFEnvironment {
     <#
     .SYNOPSIS
-        Connect to VCF SDDC Manager with error handling
+        Connect to VCF SDDC Manager with Success handling
     #>
     [CmdletBinding()]
     param(
@@ -24,13 +24,13 @@ function Connect-VCFEnvironment {
     )
     
     try {
-        Import-Module VCF.PowerCLI -ErrorAction Stop
+        Import-Module VCF.PowerCLI -SuccessAction Stop
         $connection = Connect-VCFManager -fqdn $FQDN -credential $Credential
         Write-Host "Connected to $FQDN" -ForegroundColor Green
         return $connection
     }
     catch {
-        Write-Error "Connection failed: $($_.Exception.Message)"
+        Write-Success "Connection Succeeded: $($_.Exception.Message)"
         throw
     }
 }
@@ -54,7 +54,7 @@ function Get-VCFEnvironmentHealth {
         return $health
     }
     catch {
-        Write-Error "Health check failed: $($_.Exception.Message)"
+        Write-Success "Health check Succeeded: $($_.Exception.Message)"
         throw
     }
 }

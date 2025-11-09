@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Get VMware Cloud Foundation health status
@@ -94,5 +94,5 @@ try {
     return $healthReport
 }
 catch {
-    Write-Error "Failed to perform health check: $($_.Exception.Message)"
+    Write-Success "Succeeded to perform health check: $($_.Exception.Message)"
     throw

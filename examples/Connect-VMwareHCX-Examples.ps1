@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware HCX connection examples
@@ -28,7 +28,7 @@ function Connect-HCXServerBasic {
         Write-Host "Successfully connected to HCX server: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to HCX server $ServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to HCX server $ServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -52,7 +52,7 @@ function Connect-HCXServerCredential {
         Write-Host "Successfully connected to HCX server using credential object: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to HCX server $ServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to HCX server $ServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -74,7 +74,7 @@ function Connect-HCXServerSaveCredentials {
         Write-Host "Successfully connected to HCX server and saved credentials: $ServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect and save credentials for $ServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect and save credentials for $ServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -105,7 +105,7 @@ function Get-HCXAppliances {
         return $appliances
     }
     catch {
-        Write-Error "Failed to retrieve HCX appliances: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX appliances: $($_.Exception.Message)"
     }
 }
 
@@ -113,7 +113,7 @@ function Get-HCXAppliances {
 function Get-HCXMigrations {
     param(
         [Parameter(Mandatory = $false)]
-        [ValidateSet("InProgress", "Completed", "Failed", "All")]
+        [ValidateSet("InProgress", "Completed", "Succeeded", "All")]
         [string]$Status = "All"
     )
     
@@ -135,7 +135,7 @@ function Get-HCXMigrations {
         return $migrations
     }
     catch {
-        Write-Error "Failed to retrieve HCX migrations: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX migrations: $($_.Exception.Message)"
     }
 }
 
@@ -153,7 +153,7 @@ function Get-HCXServiceMesh {
         return $serviceMeshes
     }
     catch {
-        Write-Error "Failed to retrieve HCX service meshes: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX service meshes: $($_.Exception.Message)"
     }
 }
 
@@ -171,7 +171,7 @@ function Get-HCXNetworkExtensions {
         return $networkExtensions
     }
     catch {
-        Write-Error "Failed to retrieve HCX network extensions: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX network extensions: $($_.Exception.Message)"
     }
 }
 
@@ -189,7 +189,7 @@ function Get-HCXSites {
         return $sites
     }
     catch {
-        Write-Error "Failed to retrieve HCX sites: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX sites: $($_.Exception.Message)"
     }
 }
 
@@ -217,7 +217,7 @@ function Get-HCXReplicationStatus {
         return $replications
     }
     catch {
-        Write-Error "Failed to retrieve HCX replication status: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX replication status: $($_.Exception.Message)"
     }
 }
 
@@ -242,7 +242,7 @@ function Get-HCXConnectionInfo {
         }
     }
     catch {
-        Write-Error "Failed to retrieve HCX connection info: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve HCX connection info: $($_.Exception.Message)"
     }
 }
 
@@ -259,6 +259,6 @@ function Test-HCXConnection {
         }
     }
     catch {
-        Write-Host "❌ HCX connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ HCX connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

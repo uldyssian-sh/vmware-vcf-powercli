@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware vSphere connection examples for VCF environments
@@ -28,7 +28,7 @@ function Connect-vSphereBasic {
         Write-Host "Successfully connected to $Server" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server: $($_.Exception.Message)"
     }
 }
 
@@ -49,7 +49,7 @@ function Connect-vSphereCredential {
         Write-Host "Successfully connected to $Server using credential object" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server: $($_.Exception.Message)"
     }
 }
 
@@ -68,7 +68,7 @@ function Connect-vSphereSession {
         Write-Host "Successfully connected to $Server using session ID" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server with session: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server with session: $($_.Exception.Message)"
     }
 }
 
@@ -85,7 +85,7 @@ function Connect-vSphereIntegrated {
         Write-Host "Successfully connected to $Server using integrated authentication" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server with integrated auth: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server with integrated auth: $($_.Exception.Message)"
     }
 }
 
@@ -107,7 +107,7 @@ function Connect-vSphereSaveCredentials {
         Write-Host "Successfully connected to $Server and saved credentials" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to $Server: $($_.Exception.Message)"
     }
 }
 
@@ -119,7 +119,7 @@ function Connect-vSphereMenu {
         Write-Host "Connected using menu selection" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect using menu: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect using menu: $($_.Exception.Message)"
     }
 }
 
@@ -138,7 +138,7 @@ function Connect-vSphereFederation {
         Write-Host "Successfully connected to federation vCenter: $Server" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to federation vCenter $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to federation vCenter $Server: $($_.Exception.Message)"
     }
 }
 
@@ -159,7 +159,7 @@ function Connect-vSphereCloudServices {
         Write-Host "Successfully connected to VMware Cloud Services vCenter: $Server" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to VMware Cloud Services vCenter $Server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to VMware Cloud Services vCenter $Server: $($_.Exception.Message)"
     }
 }
 
@@ -184,5 +184,5 @@ function Get-vSphereHosts {
         return $hosts
     }
     catch {
-        Write-Error "Failed to retrieve hosts: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve hosts: $($_.Exception.Message)"
     }

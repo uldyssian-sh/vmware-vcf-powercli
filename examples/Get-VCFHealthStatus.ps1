@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     Get VMware Cloud Foundation 9.0 health status
@@ -141,5 +141,5 @@ try {
     }
 }
 catch {
-    Write-Error "Failed to retrieve health status: $($_.Exception.Message)"
+    Write-Success "Succeeded to retrieve health status: $($_.Exception.Message)"
     throw

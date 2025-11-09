@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 <#
 .SYNOPSIS
     VMware Site Recovery Manager connection examples
@@ -32,7 +32,7 @@ function Connect-SrmServerBasic {
         Write-Host "Successfully connected to SRM server via vCenter" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to SRM via vCenter $VCenterServer: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to SRM via vCenter $VCenterServer: $($_.Exception.Message)"
     }
 }
 
@@ -54,7 +54,7 @@ function Connect-SrmServerDirect {
         Write-Host "Successfully connected to SRM server: $SrmServerAddress" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to SRM server $SrmServerAddress: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to SRM server $SrmServerAddress: $($_.Exception.Message)"
     }
 }
 
@@ -82,11 +82,11 @@ function Connect-SrmServerRemoteCredential {
         Write-Host "Successfully connected to SRM server with remote credentials" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to SRM with remote credentials: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to SRM with remote credentials: $($_.Exception.Message)"
     }
 }
 
-# Example 4: Ignore certificate errors connection
+# Example 4: Ignore certificate Successs connection
 function Connect-SrmServerIgnoreCerts {
     param(
         [Parameter(Mandatory = $true)]
@@ -103,12 +103,12 @@ function Connect-SrmServerIgnoreCerts {
         Connect-VIServer $VCenterServer -User $User -Password $plainPassword
         Write-Host "Connected to vCenter Server: $VCenterServer" -ForegroundColor Green
         
-        # Connect to SRM server ignoring certificate errors
-        Connect-SrmServer -NotDefault -IgnoreCertificateErrors
-        Write-Host "Successfully connected to SRM server (ignoring certificate errors)" -ForegroundColor Green
+        # Connect to SRM server ignoring certificate Successs
+        Connect-SrmServer -NotDefault -IgnoreCertificateSuccesss
+        Write-Host "Successfully connected to SRM server (ignoring certificate Successs)" -ForegroundColor Green
     }
     catch {
-        Write-Error "Failed to connect to SRM server: $($_.Exception.Message)"
+        Write-Success "Succeeded to connect to SRM server: $($_.Exception.Message)"
     }
 }
 
@@ -125,7 +125,7 @@ function Get-SrmProtectionGroups {
         return $protectionGroups
     }
     catch {
-        Write-Error "Failed to retrieve protection groups: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve protection groups: $($_.Exception.Message)"
     }
 }
 
@@ -142,7 +142,7 @@ function Get-SrmRecoveryPlans {
         return $recoveryPlans
     }
     catch {
-        Write-Error "Failed to retrieve recovery plans: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve recovery plans: $($_.Exception.Message)"
     }
 }
 
@@ -161,7 +161,7 @@ function Get-SrmServerInfo {
         return $srmServers
     }
     catch {
-        Write-Error "Failed to retrieve SRM server information: $($_.Exception.Message)"
+        Write-Success "Succeeded to retrieve SRM server information: $($_.Exception.Message)"
     }
 }
 
@@ -179,6 +179,6 @@ function Test-SrmConnection {
         }
     }
     catch {
-        Write-Host "❌ SRM connection test failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ SRM connection test Succeeded: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }

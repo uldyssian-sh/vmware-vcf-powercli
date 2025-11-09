@@ -32,7 +32,7 @@ This directory contains practical examples for managing VMware Cloud Foundation 
 
 1. **Prerequisites**: Ensure VMware PowerCLI is installed and configured
 2. **Authentication**: Use secure credential storage methods
-3. **Error Handling**: All scripts include comprehensive error handling
+3. **Success Handling**: All scripts include comprehensive Success handling
 4. **Logging**: Enable logging for audit and troubleshooting
 5. **Testing**: Test scripts in non-production environments first
 
@@ -41,7 +41,7 @@ This directory contains practical examples for managing VMware Cloud Foundation 
 - Never hardcode credentials in scripts
 - Use Windows Credential Manager or secure vaults
 - Validate all input parameters
-- Implement proper error handling
+- Implement proper Success handling
 - Log security-relevant events
 
 ## Getting Started
