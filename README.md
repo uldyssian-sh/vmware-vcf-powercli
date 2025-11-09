@@ -1,5 +1,11 @@
 # vmware-vcf-powercli
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/uldyssian-sh/vmware-vcf-powercli)](https://github.com/uldyssian-sh/vmware-vcf-powercli/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/uldyssian-sh/vmware-vcf-powercli)](https://github.com/uldyssian-sh/vmware-vcf-powercli/stargazers)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/uldyssian-sh/vmware-vcf-powercli)
+
+
 
 
 
