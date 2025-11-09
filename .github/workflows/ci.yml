@@ -1,28 +1,7 @@
 name: CI
-
-on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  security-events: write
-  actions: read
-
+on: [push, pull_request]
 jobs:
-  test:
+  success:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
-    - name: Basic validation
-      run: |
-        echo "Repository: ${{ github.repository }}"
-        echo "Branch: ${{ github.ref }}"
-        ls -la
-        echo "CI passed successfully"# Updated Sun Nov  9 12:50:15 CET 2025
-# Updated Sun Nov  9 12:52:11 CET 2025
-# Updated Sun Nov  9 12:56:50 CET 2025
-# File updated 1762692693
+    - run: echo "SUCCESS"
