@@ -42,3 +42,4 @@ You can READ objects by using `Get-VmcSddc` cmdlet. See example below:
 Get-VmcSddc -Name "SddcName" -IncludeDeleted
 ```# Updated Sun Nov  9 12:50:15 CET 2025
 # Updated Sun Nov  9 12:52:11 CET 2025
+# Updated Sun Nov  9 12:56:50 CET 2025
