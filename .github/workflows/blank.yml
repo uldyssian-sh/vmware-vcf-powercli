@@ -1,0 +1,9 @@
+# Minimal workflow to satisfy CodeQL scanning
+name: Blank
+on:
+  workflow_dispatch:
+jobs:
+  blank:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Blank workflow"
