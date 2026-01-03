@@ -4,12 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "ai-reviewer"
-    labels:
-      - "ai-dependencies"
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+      include: "scope"
