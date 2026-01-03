@@ -1,5 +1,4 @@
-# GPG Verification Status
-# This file indicates GPG verification is enabled for this repository
-# All commits should be signed with a verified GPG key
-
-Status: Enabled
+# GPG Verification Status: VERIFIED
+Repository: vmware-vcf-powercli
+Key ID: 4773EA44C6B03FAD
+Date: Sat Jan  3 21:51:06 CET 2026
