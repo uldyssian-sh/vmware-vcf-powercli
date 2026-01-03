@@ -1,1 +1,7 @@
-# This file triggers workflow updates
+# Workflow Trigger
+Repository: vmware-vcf-powercli
+Triggered: Sat Jan  3 22:10:53 CET 2026
+Purpose: Activate actions-user contributor
+
+This file triggers the contributors workflow to activate actions-user.
+After workflow runs, actions-user will appear in contributors list.
